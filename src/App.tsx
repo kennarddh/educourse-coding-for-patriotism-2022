@@ -1,14 +1,28 @@
 import { FC } from 'react'
 
-import Button from 'Components/Button'
+import {
+	Header,
+	Wave,
+	HeaderContent,
+	Title,
+	HeaderImage,
+	HeaderContaienr,
+} from './AppStyles'
 
 const App: FC = () => {
 	return (
-		<div>
-			<div data-testid='custom-element'>heading</div>
-			<Button>Blue Button</Button>
-			<Button red>Red Button</Button>
-		</div>
+		<Header>
+			<HeaderContaienr>
+				<HeaderContent>
+					<Title>Sejarah Pahlawan Daerah</Title>
+					<HeaderImage
+						src='HomeThumbnail.jpg'
+						alt='Thumbnail Dr. Ir. H. Soekarno'
+					/>
+				</HeaderContent>
+			</HeaderContaienr>
+			<Wave src='Waves/HomeWave.png' alt='Wave' />
+		</Header>
 	)
 }
 
