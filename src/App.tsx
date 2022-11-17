@@ -1,29 +1,9 @@
 import { FC } from 'react'
 
-import {
-	Header,
-	Wave,
-	HeaderContent,
-	Title,
-	HeaderImage,
-	HeaderContaienr,
-} from './AppStyles'
+import Home from 'Pages/Home/Home'
 
 const App: FC = () => {
-	return (
-		<Header>
-			<HeaderContaienr>
-				<HeaderContent>
-					<Title>Sejarah Pahlawan Daerah</Title>
-					<HeaderImage
-						src='HomeThumbnail.jpg'
-						alt='Thumbnail Dr. Ir. H. Soekarno'
-					/>
-				</HeaderContent>
-			</HeaderContaienr>
-			<Wave src='Waves/HomeWave.png' alt='Wave' />
-		</Header>
-	)
+	return <Home />
 }
 
 export default App
