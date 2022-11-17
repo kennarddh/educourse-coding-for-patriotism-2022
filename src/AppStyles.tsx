@@ -17,6 +17,10 @@ export const HeaderContent = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
+
+	@media only screen and (max-width: 900px) {
+		flex-direction: column-reverse;
+	}
 `
 
 export const HeaderContaienr = styled.div`
@@ -24,6 +28,11 @@ export const HeaderContaienr = styled.div`
 
 	display: flex;
 	align-items: center;
+
+	@media only screen and (max-width: 900px) {
+		min-height: 100vh;
+		height: unset;
+	}
 `
 
 export const Wave = styled.img`
@@ -45,9 +54,31 @@ export const Title = styled.h1`
 	font-weight: 800;
 	font-size: 100px;
 	text-align: center;
+
+	@media only screen and (max-width: 900px) {
+		font-size: 50px;
+		margin-top: 12px;
+	}
+
+	@media only screen and (max-width: 400px) {
+		font-size: 35px;
+	}
 `
 
 export const HeaderImage = styled.img`
 	max-width: 50%;
 	max-height: 100%;
+
+	@media only screen and (max-width: 900px) {
+		width: 30%;
+	}
+
+	@media only screen and (max-width: 550px) {
+		width: 50%;
+	}
+
+	@media only screen and (max-width: 400px) {
+		width: 70%;
+		max-width: unset;
+	}
 `
