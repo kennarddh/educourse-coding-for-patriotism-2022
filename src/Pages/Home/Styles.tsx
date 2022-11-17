@@ -82,3 +82,23 @@ export const HeaderImage = styled.img`
 		max-width: unset;
 	}
 `
+
+export const Content = styled.main`
+	background-color: #fff7e9;
+
+	width: 100%;
+
+	padding: 48px;
+`
+
+export const Cards = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+	gap: 20px;
+
+	width: 100%;
+`
