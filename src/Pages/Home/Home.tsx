@@ -37,7 +37,7 @@ const App: FC = () => {
 							imagePath={value.image}
 							imageAlt={`${value.name} Portrait`}
 							imageSource={value.imageSource}
-							id='42a9b509-8915-4986-b8c8-5e4be5ffcf6a'
+							id={id}
 							name={value.name}
 						/>
 					))}

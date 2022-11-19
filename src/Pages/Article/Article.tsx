@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import { FC, useContext } from 'react'
+import { FC, useContext, useEffect } from 'react'
 
 import PagesContext from 'Contexts/Pages/Pages'
 
@@ -23,6 +23,10 @@ const Article: FC = () => {
 	const OnBack = () => {
 		SetSelectedArticleId(undefined)
 	}
+
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [])
 
 	if (!SelectedArticleId) return null
 
