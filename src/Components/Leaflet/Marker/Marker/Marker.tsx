@@ -1,6 +1,6 @@
 import { FC, useRef } from 'react'
 
-import { Marker as LeafletMarker, Popup } from 'react-leaflet'
+import { Marker as LeafletMarker } from 'react-leaflet'
 
 import { LeafletEventHandlerFnMap, Marker as ILeafletMarker } from 'leaflet'
 
@@ -32,9 +32,7 @@ const Marker: FC<Props> = ({
 			icon={DefaultIcon}
 			{...(draggable ? { eventHandlers: events } : {})}
 			ref={MarkerRef}
-		>
-			<Popup>You are here</Popup>
-		</LeafletMarker>
+		></LeafletMarker>
 	)
 }
 
