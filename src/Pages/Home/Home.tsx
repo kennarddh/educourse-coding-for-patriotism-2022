@@ -14,6 +14,8 @@ import {
 import Card from 'Components/Card/Card'
 import People from 'Constants/People'
 
+import Map from 'Components/Map/Map'
+
 const App: FC = () => {
 	return (
 		<>
@@ -30,6 +32,7 @@ const App: FC = () => {
 				<Wave src='Waves/HomeWave.png' alt='Wave' />
 			</Header>
 			<Content>
+				<Map />
 				<Cards>
 					{Object.entries(People).map(([id, value]) => (
 						<Card
