@@ -19,6 +19,7 @@ const Map: FC = () => {
 				center={[-1, 117.24809093207894]}
 				zoom={5}
 				scrollWheelZoom
+				doubleClickZoom={false}
 				style={{
 					width: '90%',
 					height: '100%',
