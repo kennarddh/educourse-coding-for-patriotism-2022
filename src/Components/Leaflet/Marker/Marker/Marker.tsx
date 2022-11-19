@@ -11,12 +11,13 @@ import type { Props } from './Types'
 const Marker: FC<Props> = ({
 	draggable = false,
 	position = { lat: 0, lng: 0 },
+	debug = false,
 }) => {
 	const MarkerRef = useRef<ILeafletMarker>(null)
 
 	let events: LeafletEventHandlerFnMap = {}
 
-	if (draggable) {
+	if (draggable && debug) {
 		events = {
 			dragend() {
 				console.log(MarkerRef?.current?.getLatLng())
