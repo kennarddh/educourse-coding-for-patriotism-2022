@@ -1,6 +1,6 @@
 import { FC, useContext } from 'react'
 
-import { PagesContext } from 'Contexts/Pages/Pages'
+import PagesContext from 'Contexts/Pages/Pages'
 
 import {
 	Header,

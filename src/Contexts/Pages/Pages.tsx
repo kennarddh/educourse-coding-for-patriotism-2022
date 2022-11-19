@@ -2,7 +2,7 @@ import { FC, createContext, useState } from 'react'
 
 import type { IPagesContext, IPagesContextProviderProps } from './Types'
 
-export const PagesContext = createContext<IPagesContext>({
+const PagesContext = createContext<IPagesContext>({
 	SelectedArticleId: undefined,
 	SetSelectedArticleId: () => undefined,
 })
@@ -20,3 +20,5 @@ export const PagesProvider: FC<IPagesContextProviderProps> = ({ children }) => {
 		</PagesContext.Provider>
 	)
 }
+
+export default PagesContext
