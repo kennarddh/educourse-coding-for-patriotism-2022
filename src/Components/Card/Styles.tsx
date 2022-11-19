@@ -54,7 +54,8 @@ export const Button = styled.button`
 
 	background-color: #ff731d;
 
-	&:focus {
+	&:focus,
+	&:hover {
 		outline: 3px solid #fff7e9;
 	}
 `
