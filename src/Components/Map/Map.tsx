@@ -4,6 +4,9 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 
 import Marker from 'Components/Leaflet/Marker/Marker/Marker'
 
+import People from 'Constants/People'
+import LocationLookup from 'Constants/LocationLookup'
+
 import 'leaflet/dist/leaflet.css'
 
 import { Container } from './Styles'
@@ -27,7 +30,9 @@ const Map: FC = () => {
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 					url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 				/>
-				<Marker />
+				{Object.entries(People).map(([id, person]) => (
+					<Marker key={id} position={LocationLookup[person.origin]} />
+				))}
 			</MapContainer>
 		</Container>
 	)
