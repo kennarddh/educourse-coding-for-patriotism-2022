@@ -12,6 +12,7 @@ import {
 } from './Styles'
 
 import Card from 'Components/Card/Card'
+import People from 'Constants/People'
 
 const App: FC = () => {
 	return (
@@ -30,12 +31,16 @@ const App: FC = () => {
 			</Header>
 			<Content>
 				<Cards>
-					<Card
-						imagePath='People/Soekarno/Card.jpg'
-						imageAlt='Soekarno Portrait'
-						id='42a9b509-8915-4986-b8c8-5e4be5ffcf6a'
-						name='Dr. Ir. H. Soekarno'
-					/>
+					{Object.entries(People).map(([id, value]) => (
+						<Card
+							key={id}
+							imagePath={value.image}
+							imageAlt={`${value.name} Portrait`}
+							imageSource={value.imageSource}
+							id='42a9b509-8915-4986-b8c8-5e4be5ffcf6a'
+							name={value.name}
+						/>
+					))}
 				</Cards>
 			</Content>
 		</>

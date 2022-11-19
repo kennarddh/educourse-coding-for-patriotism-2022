@@ -6,7 +6,7 @@ import type { Props } from './Types'
 
 import { Container, Image, Content, Name, Button } from './Styles'
 
-const Card: FC<Props> = ({ imagePath, imageAlt, id, name }) => {
+const Card: FC<Props> = ({ imagePath, imageAlt, imageSource, id, name }) => {
 	const { SetSelectedArticleId } = useContext(PagesContext)
 
 	const OnClick = () => {
@@ -15,7 +15,11 @@ const Card: FC<Props> = ({ imagePath, imageAlt, id, name }) => {
 
 	return (
 		<Container>
-			<Image src={imagePath} alt={imageAlt} />
+			<Image
+				title={`Sumber: ${imageSource}`}
+				src={imagePath}
+				alt={imageAlt}
+			/>
 			<Content>
 				<Name>{name}</Name>
 				<Button onClick={OnClick}>Baca selengkapnya</Button>
