@@ -12,11 +12,12 @@ const Map: FC = () => {
 	return (
 		<Container>
 			<MapContainer
-				center={[-2.4492049339511506, 114.10591405080922]}
+				dragging={false}
+				center={[-1, 117.24809093207894]}
 				zoom={5}
 				scrollWheelZoom
 				style={{
-					width: '80%',
+					width: '90%',
 					height: '100%',
 				}}
 				minZoom={5}
