@@ -1,4 +1,6 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
+
+import { PagesContext } from 'Contexts/Pages/Pages'
 
 import {
 	Header,
@@ -13,10 +15,16 @@ import {
 } from './Styles'
 
 const Article: FC = () => {
+	const { SetSelectedArticleId } = useContext(PagesContext)
+
+	const OnBack = () => {
+		SetSelectedArticleId(undefined)
+	}
+
 	return (
 		<>
 			<Header>
-				<BackButton>Kembali</BackButton>
+				<BackButton onClick={OnBack}>Kembali</BackButton>
 			</Header>
 			<Content>
 				<Title>Name</Title>

@@ -19,8 +19,21 @@ export const Header = styled.h1`
 	}
 `
 
-export const BackButton = styled.div`
+export const BackButton = styled.button`
 	color: #fff7e9;
+	border-radius: 8px;
+	border: none;
+	background-color: transparent;
+	font-size: 24px;
+	font-weight: 600;
+
+	padding: 2px 4px;
+
+	cursor: pointer;
+
+	&:focus {
+		outline: 5px solid #5f9df7;
+	}
 `
 
 export const Content = styled.div`
