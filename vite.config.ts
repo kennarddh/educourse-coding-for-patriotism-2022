@@ -53,5 +53,6 @@ export default defineConfig(({ mode }) => {
 		define: {
 			env: { ...appEnv },
 		},
+		base: './',
 	}
 })
