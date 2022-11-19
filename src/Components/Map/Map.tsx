@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { MapContainer, TileLayer } from 'react-leaflet'
 
-import Marker from 'Components/Leaflet/Marker/MoveableMarker/MoveableMarker'
+import Marker from 'Components/Leaflet/Marker/Marker/Marker'
 
 import 'leaflet/dist/leaflet.css'
 
