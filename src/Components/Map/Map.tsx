@@ -19,6 +19,8 @@ const Map: FC = () => {
 					width: '80%',
 					height: '100%',
 				}}
+				minZoom={5}
+				maxZoom={5}
 			>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
