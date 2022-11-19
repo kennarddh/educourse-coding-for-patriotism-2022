@@ -1,13 +1,15 @@
 import { FC } from 'react'
 
+import type { Props } from './Types'
+
 import { Container, Image, Content, Name, Button } from './Styles'
 
-const Card: FC = () => {
+const Card: FC<Props> = ({ imagePath, imageAlt, id, name }) => {
 	return (
 		<Container>
-			<Image src='People/Soekarno.jpg' alt='Soekarno Portrait' />
+			<Image src={imagePath} alt={imageAlt} />
 			<Content>
-				<Name>Dr. Ir. H. Soekarno</Name>
+				<Name>{name}</Name>
 				<Button>Baca selengkapnya</Button>
 			</Content>
 		</Container>

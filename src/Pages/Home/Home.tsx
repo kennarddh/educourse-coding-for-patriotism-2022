@@ -30,13 +30,12 @@ const App: FC = () => {
 			</Header>
 			<Content>
 				<Cards>
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
-					<Card />
+					<Card
+						imagePath='People/Soekarno.jpg'
+						imageAlt='Soekarno Portrait'
+						id='42a9b509-8915-4986-b8c8-5e4be5ffcf6a'
+						name='Dr. Ir. H. Soekarno'
+					/>
 				</Cards>
 			</Content>
 		</>
