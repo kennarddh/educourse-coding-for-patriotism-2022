@@ -13,6 +13,10 @@ export const Header = styled.h1`
 	display: flex;
 	align-items: center;
 	padding: 0 48px;
+
+	@media only screen and (max-width: 500px) {
+		justify-content: center;
+	}
 `
 
 export const BackButton = styled.div`
@@ -35,6 +39,10 @@ export const Title = styled.h1``
 
 export const ImageContainer = styled.div`
 	width: 60%;
+
+	@media only screen and (max-width: 500px) {
+		width: 80%;
+	}
 `
 
 export const Source = styled.p``

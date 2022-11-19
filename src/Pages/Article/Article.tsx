@@ -27,8 +27,7 @@ const Article: FC = () => {
 				<TextContainer>
 					<Source>Sumber: https://example.com/</Source>
 					<Text>
-						{`
-Ir.Soekarno, Pahlawan Nasional Indonesia yang merupakan presiden pertama Republik Indonesia. Perjuangan dan jasanya untuk bangsa Indonesia tidak terhitung jumlah, bahkan kehebatannya tidak hanya terkenal di dalam negeri namun sampai internasional. Itulah sebabnya biografi Ir. Soekarno sangat menarik untuk dibahas dan diketahui oleh generasi bangsa Indonesia.
+						{`Ir.Soekarno, Pahlawan Nasional Indonesia yang merupakan presiden pertama Republik Indonesia. Perjuangan dan jasanya untuk bangsa Indonesia tidak terhitung jumlah, bahkan kehebatannya tidak hanya terkenal di dalam negeri namun sampai internasional. Itulah sebabnya biografi Ir. Soekarno sangat menarik untuk dibahas dan diketahui oleh generasi bangsa Indonesia.
 Sosok Soekarno memiliki tempat tersendiri bagi masyarakat Indonesia dan memberikan banyak teladan bagi bangsa. Banyak tenaga, pemikiran, bahkan jiwa dipertaruhkan oleh Soekarno untuk Indonesia, mulai dari melawan penjajahan sampai membangun bangsa ini menjadi seperti sekarang. Soekarno menjadi tokoh penting dalam sejarah Indonesia yang akan terus terkenang jasa-jasanya.
 
 Ir. Soekarno atau akrab dipanggil Bung Karno lahir pada 6 Juni 1901 di Surabaya, Jawa Timur dengan nama kecilnya Kusno Sosrodihardjo dan wafat pada 21 Juni 1970 di Jakarta. Bung Karno adalah anak dari pasangan Raden Soekemi Sosrodihardjo dan Ida Ayu Nyoman Rai. Karena sakit-sakitan, Soekarno kecil dirawat kakaknya bernama Raden Hardjodikromo di Tulungagung. Soekarno kembali tinggal dengan bapak dan ibunya pada 1909 di Mojokerto.
