@@ -46,7 +46,7 @@ export const Wave = styled.img`
 `
 
 export const Title = styled.h1`
-	width: 50%;
+	width: 40%;
 
 	color: #fff7e9;
 
