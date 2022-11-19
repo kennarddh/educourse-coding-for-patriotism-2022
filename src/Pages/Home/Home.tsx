@@ -31,7 +31,7 @@ const App: FC = () => {
 			<Content>
 				<Cards>
 					<Card
-						imagePath='People/Soekarno.jpg'
+						imagePath='People/Soekarno/Card.jpg'
 						imageAlt='Soekarno Portrait'
 						id='42a9b509-8915-4986-b8c8-5e4be5ffcf6a'
 						name='Dr. Ir. H. Soekarno'
