@@ -17,6 +17,7 @@ const Map: FC<Props> = ({ onMarkerClick }) => {
 		<Container>
 			<MapContainer
 				dragging
+				scrollWheelZoom={false}
 				center={[-1, 117.24809093207894]}
 				zoom={5}
 				doubleClickZoom={false}
