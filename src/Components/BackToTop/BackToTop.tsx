@@ -8,7 +8,7 @@ const BackToTop: FC = () => {
 	}
 
 	return (
-		<Container onClick={OnClick}>
+		<Container onClick={OnClick} title='Kembali ke atas'>
 			<Arrow />
 		</Container>
 	)
