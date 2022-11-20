@@ -18,6 +18,19 @@ const Modal = forwardRef<IModalHandle, Props>(
 		const ModalContentRef = useRef<HTMLDivElement>()
 
 		const OnClickOutside = () => {
+			document
+				.querySelector('#root')
+				?.setAttribute('aria-hidden', 'false')
+
+			document
+				.querySelectorAll(
+					'#root :where(button,a,div.leaflet-container,img.leaflet-marker-icon)'
+				)
+				.forEach(el => {
+					el.classList.remove('disabled')
+					el.setAttribute('tabindex', '0')
+				})
+
 			document.body.style.overflow = ''
 
 			SetIsOpen(false)

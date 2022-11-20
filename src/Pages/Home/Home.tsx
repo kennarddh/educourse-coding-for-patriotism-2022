@@ -103,6 +103,7 @@ const Home: FC = () => {
 								imageSource={value.imageSource}
 								id={id}
 								name={value.name}
+								onBeforeClick={() => ModalRef?.current?.Close()}
 							/>
 						))}
 				</ModalCards>

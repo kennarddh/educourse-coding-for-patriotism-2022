@@ -4,4 +4,5 @@ export interface Props {
 	imageSource: string
 	id: string
 	name: string
+	onBeforeClick?: () => void
 }

@@ -32,6 +32,8 @@ export const Content = styled.div`
 	justify-content: space-evenly;
 	align-items: center;
 	flex-direction: column;
+
+	pointer-events: all;
 `
 
 export const Name = styled.h3`
@@ -57,6 +59,8 @@ export const Button = styled.button`
 	color: #fff7e9;
 
 	background-color: #ff731d;
+
+	cursor: pointer;
 
 	&:focus,
 	&:hover {

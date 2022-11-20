@@ -9,6 +9,8 @@ const CreateWrapperAndAppendToBody = (wrapperId: string): HTMLDivElement => {
 
 	wrapperElement.setAttribute('id', wrapperId)
 
+	wrapperElement.setAttribute('aria-hidden', 'false')
+
 	document.body.appendChild(wrapperElement)
 
 	return wrapperElement

@@ -6,10 +6,19 @@ import type { Props } from './Types'
 
 import { Container, Image, Content, Name, Button } from './Styles'
 
-const Card: FC<Props> = ({ imagePath, imageAlt, imageSource, id, name }) => {
+const Card: FC<Props> = ({
+	imagePath,
+	imageAlt,
+	imageSource,
+	id,
+	name,
+	onBeforeClick,
+}) => {
 	const { SetSelectedArticleId } = useContext(PagesContext)
 
 	const OnClick = () => {
+		if (onBeforeClick) onBeforeClick()
+
 		SetSelectedArticleId(id)
 	}
 
