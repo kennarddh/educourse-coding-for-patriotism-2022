@@ -18,6 +18,7 @@ import {
 
 import Card from 'Components/Card/Card'
 import People from 'Constants/People'
+import LocationLookup from 'Constants/LocationLookup'
 import Modal, { IModalHandle } from 'Components/Modal/Modal'
 
 import Map from 'Components/Map/Map'
@@ -77,7 +78,9 @@ const Home: FC = () => {
 				ref={ModalRef}
 			>
 				<ModalHeader>
-					<ModalTitle>Jawa Timur</ModalTitle>
+					<ModalTitle>
+						{LocationLookup[SelectedProvince ?? '']?.title}
+					</ModalTitle>
 					<ModalCloseButton onClick={OnCloseModal}>
 						Tutup
 					</ModalCloseButton>
