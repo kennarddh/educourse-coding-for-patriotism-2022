@@ -46,37 +46,16 @@ const Article: FC = () => {
 
 	const OnHighlight = () => {
 		const selection: Selection | null = getSelection()
-
-		if (selection?.rangeCount === 0)
-			return alert('Tidak ada teks yang dipilih')
-
-		const newSet = new Set(HighlightData)
-
 		const range = selection?.getRangeAt(0)
-
 		const cloneContentsChildren = range?.cloneContents().children
 
-		const startEl = cloneContentsChildren?.[0]
-		const endEl = cloneContentsChildren?.[cloneContentsChildren?.length - 1]
+		console.log({ selection, range, cloneContentsChildren })
 
-		if (!(startEl && endEl)) return alert('Tidak ada teks yang dipilih')
-
-		const startIndex: number = parseInt(
-			startEl?.getAttribute('data-index') ?? '0',
-			10
-		)
-
-		const endIndex: number = parseInt(
-			endEl?.getAttribute('data-index') ?? '0',
-			10
-		)
-
-		for (let i = startIndex; i <= endIndex; i++) {
-			if (newSet.has(i)) newSet.delete(i)
-			else newSet.add(i)
+		if (cloneContentsChildren?.length === 0) {
+			// Select in one group
+		} else {
+			// Selection in {length} group
 		}
-
-		SetHighlightData(newSet)
 
 		selection?.removeAllRanges()
 	}
@@ -120,13 +99,36 @@ const Article: FC = () => {
 					<Text ref={TextRef}>
 						{People[SelectedArticleId].article
 							.split('')
-							.map((character, index) => (
+							.reduce<
+								{
+									value: string
+									isHighlighted: boolean
+									startIndex: number
+								}[]
+							>((acc, val, index) => {
+								if (
+									HighlightData.has(index) ===
+										HighlightData.has(index - 1) &&
+									acc[acc.length - 1]
+								)
+									acc[acc.length - 1].value += val
+								else
+									acc.push({
+										value: val,
+										isHighlighted: HighlightData.has(index),
+										startIndex: index,
+									})
+
+								return acc
+							}, [])
+							.map((val, index) => (
 								<HighlightSpan
 									key={index}
-									highlight={HighlightData.has(index)}
+									highlight={val.isHighlighted}
 									data-index={index}
+									data-startIndex={val.startIndex}
 								>
-									{character}
+									{val.value}
 								</HighlightSpan>
 							))}
 					</Text>
