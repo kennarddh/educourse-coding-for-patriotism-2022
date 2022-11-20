@@ -7,6 +7,7 @@ import People from 'Constants/People'
 
 import Footer from 'Components/Footer/Footer'
 import BackToTop from 'Components/BackToTop/BackToTop'
+import useTitle from 'Hooks/useTitle'
 
 import {
 	Header,
@@ -22,6 +23,8 @@ import {
 
 const Article: FC = () => {
 	const { SetSelectedArticleId, SelectedArticleId } = useContext(PagesContext)
+
+	useTitle(People[SelectedArticleId ?? ''].name)
 
 	const OnBack = () => {
 		SetSelectedArticleId(undefined)

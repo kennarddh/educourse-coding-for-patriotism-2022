@@ -22,11 +22,14 @@ import LocationLookup from 'Constants/LocationLookup'
 import Modal, { IModalHandle } from 'Components/Modal/Modal'
 import Footer from 'Components/Footer/Footer'
 import BackToTop from 'Components/BackToTop/BackToTop'
+import useTitle from 'Hooks/useTitle'
 
 import Map from 'Components/Map/Map'
 
 const Home: FC = () => {
 	const ModalRef = useRef<IModalHandle>(null)
+
+	useTitle('Beranda')
 
 	const [SelectedProvince, SetSelectedProvince] = useState<string | null>(
 		null
