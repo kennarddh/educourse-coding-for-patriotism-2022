@@ -19,6 +19,8 @@ import {
 	Image,
 	TextContainer,
 	Text,
+	HighlightIcon,
+	Highlight,
 } from './Styles'
 
 const Article: FC = () => {
@@ -32,6 +34,14 @@ const Article: FC = () => {
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
+
+		const MouseUp = () => {
+			console.log(getSelection())
+		}
+
+		window.addEventListener('mouseup', MouseUp)
+
+		return () => window.removeEventListener('mouseup', MouseUp)
 	}, [])
 
 	if (!SelectedArticleId) return null
@@ -62,7 +72,14 @@ const Article: FC = () => {
 					<Text>{People[SelectedArticleId].article}</Text>
 				</TextContainer>
 			</Content>
-			<Footer /> <BackToTop />
+			<Footer />
+			<BackToTop />
+			<Highlight>
+				<HighlightIcon
+					src='Stabilo.png'
+					title='Sumber ikon https://thenounproject.com/icon/stabilo-2348306/'
+				/>
+			</Highlight>
 		</>
 	)
 }
