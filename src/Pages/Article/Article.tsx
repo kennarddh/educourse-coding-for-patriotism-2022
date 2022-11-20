@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import { FC, useContext, useEffect } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
 
 import PagesContext from 'Contexts/Pages/Pages'
 
@@ -23,8 +23,17 @@ import {
 	Highlight,
 } from './Styles'
 
+import type { IHighlightData } from './Types'
+
 const Article: FC = () => {
 	const { SetSelectedArticleId, SelectedArticleId } = useContext(PagesContext)
+
+	const [HighlightData, SetHighlightData] = useState<IHighlightData>(() => {
+		const data =
+			localStorage.getItem(`highlights-${SelectedArticleId}`) ?? '[]'
+
+		return new Set(JSON.parse(data))
+	})
 
 	useTitle(People[SelectedArticleId ?? ''].name)
 
@@ -32,17 +41,33 @@ const Article: FC = () => {
 		SetSelectedArticleId(undefined)
 	}
 
-	useEffect(() => {
-		window.scrollTo(0, 0)
+	const OnHighlight = () => {
+		const selection: Selection | null = getSelection()
 
-		const MouseUp = () => {
-			console.log(getSelection())
+		const startIndex: number = selection?.anchorOffset ?? 0
+
+		const endIndex: number = (selection?.focusOffset ?? 0) - 1
+
+		const newSet = new Set(HighlightData)
+
+		for (let i = startIndex; i <= endIndex; i++) {
+			if (newSet.has(i)) newSet.delete(i)
+			else newSet.add(i)
 		}
 
-		window.addEventListener('mouseup', MouseUp)
+		SetHighlightData(newSet)
+	}
 
-		return () => window.removeEventListener('mouseup', MouseUp)
+	useEffect(() => {
+		window.scrollTo(0, 0)
 	}, [])
+
+	useEffect(() => {
+		localStorage.setItem(
+			`highlights-${SelectedArticleId}`,
+			JSON.stringify([...HighlightData])
+		)
+	}, [HighlightData, SelectedArticleId])
 
 	if (!SelectedArticleId) return null
 
@@ -74,7 +99,7 @@ const Article: FC = () => {
 			</Content>
 			<Footer />
 			<BackToTop />
-			<Highlight>
+			<Highlight onClick={OnHighlight}>
 				<HighlightIcon
 					src='Stabilo.png'
 					title='Sumber ikon https://thenounproject.com/icon/stabilo-2348306/'
