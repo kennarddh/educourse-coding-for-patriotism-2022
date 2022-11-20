@@ -3,6 +3,10 @@ import styled from 'styled-components'
 export const Container = styled.article`
 	width: 300px;
 	height: 400px;
+
+	@media only screen and (max-width: 400px) {
+		height: unset;
+	}
 `
 
 export const Image = styled.img`
