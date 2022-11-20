@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const Container = styled.footer`
+export const Container = styled.div`
 	width: 100%;
-	background-color: #5f9df7;
+	background-color: #ff731d;
 	padding-bottom: 20px;
 
 	display: flex;
@@ -13,6 +13,12 @@ export const Container = styled.footer`
 	@media only screen and (max-width: 700px) {
 		padding-bottom: 40px;
 	}
+
+	border-radius: 24px 24px 0 0;
+`
+
+export const Wrapper = styled.footer`
+	background-color: #fff7e9;
 `
 
 export const EducourseLogo = styled.img`

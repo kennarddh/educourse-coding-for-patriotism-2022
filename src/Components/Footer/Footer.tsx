@@ -1,13 +1,15 @@
 import { FC } from 'react'
 
-import { Container, EducourseLogo, Text } from './Styles'
+import { Container, EducourseLogo, Text, Wrapper } from './Styles'
 
 const Footer: FC = () => {
 	return (
-		<Container>
-			<EducourseLogo src='EducourseLogo.png' />
-			<Text>Dibuat dengan Typescript dan React JS.</Text>
-		</Container>
+		<Wrapper>
+			<Container>
+				<EducourseLogo src='EducourseLogo.png' />
+				<Text>Dibuat dengan Typescript dan React JS.</Text>
+			</Container>
+		</Wrapper>
 	)
 }
 
