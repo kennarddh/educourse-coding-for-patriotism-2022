@@ -36,12 +36,12 @@ export const HeaderContaienr = styled.div`
 `
 
 export const Wave = styled.img`
-	/* I don't know why this need 1px offset */
+	/* I don't know why this require 1px offset */
 
 	width: calc(100% + 2px);
 
 	position: absolute;
-	bottom: 0;
+	bottom: -10px; // Remove unknown line
 	left: -1px;
 `
 
