@@ -6,7 +6,7 @@ const Footer: FC = () => {
 	return (
 		<Container>
 			<EducourseLogo src='EducourseLogo.png' />
-			<Text>Dibuat dengan Typescript dan React JS</Text>
+			<Text>Dibuat dengan Typescript dan React JS.</Text>
 		</Container>
 	)
 }
