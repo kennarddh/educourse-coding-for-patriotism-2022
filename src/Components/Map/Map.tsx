@@ -16,17 +16,14 @@ const Map: FC<Props> = ({ onMarkerClick }) => {
 	return (
 		<Container>
 			<MapContainer
-				dragging={false}
+				dragging
 				center={[-1, 117.24809093207894]}
 				zoom={5}
-				scrollWheelZoom={false}
 				doubleClickZoom={false}
 				style={{
-					width: '90%',
+					width: '95%',
 					height: '100%',
 				}}
-				minZoom={5}
-				maxZoom={5}
 			>
 				<TileLayer
 					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
