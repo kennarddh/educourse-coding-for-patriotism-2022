@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import type { IHighlightSpan } from './Types'
 
 export const Header = styled.h1`
 	position: fixed;
@@ -104,4 +106,13 @@ export const Highlight = styled.button`
 	cursor: pointer;
 
 	border: 5px solid #1746a2;
+`
+
+export const HighlightSpan = styled.span<IHighlightSpan>`
+	${({ highlight }) =>
+		highlight
+			? css`
+					background-color: #5f9df7;
+			  `
+			: ''}
 `

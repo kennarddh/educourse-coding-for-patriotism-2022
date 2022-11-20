@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import { FC, useContext, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState, useRef } from 'react'
 
 import PagesContext from 'Contexts/Pages/Pages'
 
@@ -21,6 +21,7 @@ import {
 	Text,
 	HighlightIcon,
 	Highlight,
+	HighlightSpan,
 } from './Styles'
 
 import type { IHighlightData } from './Types'
@@ -35,6 +36,8 @@ const Article: FC = () => {
 		return new Set(JSON.parse(data))
 	})
 
+	const TextRef = useRef<HTMLParagraphElement>(null)
+
 	useTitle(People[SelectedArticleId ?? ''].name)
 
 	const OnBack = () => {
@@ -44,11 +47,29 @@ const Article: FC = () => {
 	const OnHighlight = () => {
 		const selection: Selection | null = getSelection()
 
-		const startIndex: number = selection?.anchorOffset ?? 0
-
-		const endIndex: number = (selection?.focusOffset ?? 0) - 1
+		if (selection?.rangeCount === 0)
+			return alert('Tidak ada teks yang dipilih')
 
 		const newSet = new Set(HighlightData)
+
+		const range = selection?.getRangeAt(0)
+
+		const cloneContentsChildren = range?.cloneContents().children
+
+		const startEl = cloneContentsChildren?.[0]
+		const endEl = cloneContentsChildren?.[cloneContentsChildren?.length - 1]
+
+		if (!(startEl && endEl)) return alert('Tidak ada teks yang dipilih')
+
+		const startIndex: number = parseInt(
+			startEl?.getAttribute('data-index') ?? '0',
+			10
+		)
+
+		const endIndex: number = parseInt(
+			endEl?.getAttribute('data-index') ?? '0',
+			10
+		)
 
 		for (let i = startIndex; i <= endIndex; i++) {
 			if (newSet.has(i)) newSet.delete(i)
@@ -56,6 +77,8 @@ const Article: FC = () => {
 		}
 
 		SetHighlightData(newSet)
+
+		selection?.removeAllRanges()
 	}
 
 	useEffect(() => {
@@ -94,7 +117,19 @@ const Article: FC = () => {
 					>
 						Sumber: {People[SelectedArticleId].articleSource}
 					</Source>
-					<Text>{People[SelectedArticleId].article}</Text>
+					<Text ref={TextRef}>
+						{People[SelectedArticleId].article
+							.split('')
+							.map((character, index) => (
+								<HighlightSpan
+									key={index}
+									highlight={HighlightData.has(index)}
+									data-index={index}
+								>
+									{character}
+								</HighlightSpan>
+							))}
+					</Text>
 				</TextContainer>
 			</Content>
 			<Footer />
