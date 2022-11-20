@@ -38,13 +38,19 @@ const Article: FC = () => {
 			<Content>
 				<Title>{People[SelectedArticleId].name}</Title>
 				<ImageContainer>
-					<Source>
+					<Source
+						href={People[SelectedArticleId].thumbnailSource}
+						target='_blank'
+					>
 						Sumber: {People[SelectedArticleId].thumbnailSource}
 					</Source>
 					<Image src={People[SelectedArticleId].thumbnail} />
 				</ImageContainer>
 				<TextContainer>
-					<Source>
+					<Source
+						href={People[SelectedArticleId].articleSource}
+						target='_blank'
+					>
 						Sumber: {People[SelectedArticleId].articleSource}
 					</Source>
 					<Text>{People[SelectedArticleId].article}</Text>

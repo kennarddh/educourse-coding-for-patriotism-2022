@@ -62,7 +62,7 @@ export const ImageContainer = styled.div`
 	}
 `
 
-export const Source = styled.p``
+export const Source = styled.a``
 
 export const Image = styled.img`
 	width: 100%;
