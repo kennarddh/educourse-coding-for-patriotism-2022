@@ -9,3 +9,15 @@ export const Container = styled.div`
 
 	margin-bottom: 48px;
 `
+
+export const Wrapper = styled.div`
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	gap: 10px;
+
+	flex-direction: column;
+`
