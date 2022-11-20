@@ -8,7 +8,11 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	body{
-	overflow-x: hidden;
+		overflow-x: hidden;
+	}
+
+	#root[aria-hidden='true'] {
+		pointer-events: none;
 	}
 `
 

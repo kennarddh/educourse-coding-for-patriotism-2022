@@ -27,12 +27,38 @@ const Modal = forwardRef<IModalHandle, Props>(
 
 		useImperativeHandle(ref, () => ({
 			Open() {
+				document
+					.querySelector('#root')
+					?.setAttribute('aria-hidden', 'true')
+
+				document
+					.querySelectorAll(
+						'#root :where(button,a,div.leaflet-container,img.leaflet-marker-icon)'
+					)
+					.forEach(el => {
+						el.classList.add('disabled')
+						el.setAttribute('tabindex', '-1')
+					})
+
 				document.body.style.overflow = 'hidden'
 
 				SetIsOpen(true)
 			},
 			Close() {
-				document.body.style.overflow = 'unset'
+				document
+					.querySelector('#root')
+					?.setAttribute('aria-hidden', 'false')
+
+				document
+					.querySelectorAll(
+						'#root :where(button,a,div.leaflet-container,img.leaflet-marker-icon)'
+					)
+					.forEach(el => {
+						el.classList.remove('disabled')
+						el.setAttribute('tabindex', '0')
+					})
+
+				document.body.style.overflow = ''
 
 				SetIsOpen(false)
 			},

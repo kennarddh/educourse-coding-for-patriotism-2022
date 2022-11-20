@@ -15,4 +15,5 @@ export const ModalContainer = styled.div<IModalContainer>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	pointer-events: none;
 `
