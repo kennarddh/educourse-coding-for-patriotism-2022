@@ -27,6 +27,18 @@ export const resolveAlias = Object.entries(relativeAlias).reduce(
 	{}
 )
 
+const CustomHtmlPlugin = () => {
+	return {
+		name: 'custom-html-plugin',
+		transformIndexHtml(html: string) {
+			return html.replace(
+				/<script type="module" crossorigin/,
+				'<script defer'
+			)
+		},
+	}
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
 	const envPrefix: string[] = ['APP_']
@@ -38,7 +50,7 @@ export default defineConfig(({ mode }) => {
 	const appEnv = loadEnv(mode, process.cwd(), envPrefix)
 
 	return {
-		plugins: [react(), eslintPlugin(), svgr()],
+		plugins: [react(), eslintPlugin(), svgr(), CustomHtmlPlugin()],
 		resolve: {
 			alias: resolveAlias,
 		},
