@@ -5,11 +5,12 @@ export const Container = styled.div`
 	background-color: #5f9df7;
 	padding-bottom: 20px;
 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
 	@media only screen and (max-width: 700px) {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
 		padding-bottom: 40px;
 	}
 `
@@ -26,8 +27,7 @@ export const Text = styled.p`
 	color: #fff7e9;
 	font-size: 20px;
 	font-weight: 600;
-	padding: 0 0 50px 50px;
-	text-align: center;
+	padding: 0 0 50px 0;
 
 	@media only screen and (max-width: 700px) {
 		padding: 0;
