@@ -85,26 +85,6 @@ const App: FC = () => {
 							name={value.name}
 						/>
 					))}
-					{Object.entries(People).map(([id, value]) => (
-						<Card
-							key={id}
-							imagePath={value.image}
-							imageAlt={`${value.name} Portrait`}
-							imageSource={value.imageSource}
-							id={id}
-							name={value.name}
-						/>
-					))}
-					{Object.entries(People).map(([id, value]) => (
-						<Card
-							key={id}
-							imagePath={value.image}
-							imageAlt={`${value.name} Portrait`}
-							imageSource={value.imageSource}
-							id={id}
-							name={value.name}
-						/>
-					))}
 				</ModalCards>
 			</Modal>
 		</>

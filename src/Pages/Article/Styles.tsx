@@ -34,6 +34,10 @@ export const BackButton = styled.button`
 	&:focus {
 		outline: 5px solid #5f9df7;
 	}
+
+	&:hover {
+		outline: 5px solid #5f9df7;
+	}
 `
 
 export const Content = styled.div`
