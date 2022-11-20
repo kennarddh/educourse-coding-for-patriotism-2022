@@ -4,6 +4,7 @@ import { IModalContainer } from './Types'
 
 export const ModalContainer = styled.div<IModalContainer>`
 	background-color: ${({ backgroundColor }) => backgroundColor};
+	z-index: ${({ zIndex }) => zIndex};
 
 	position: absolute;
 	top: ${() => window.scrollY}px;
@@ -15,7 +16,3 @@ export const ModalContainer = styled.div<IModalContainer>`
 	justify-content: center;
 	align-items: center;
 `
-
-ModalContainer.defaultProps = {
-	backgroundColor: '#b4b4b4a4',
-}

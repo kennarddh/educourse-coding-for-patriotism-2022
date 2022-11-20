@@ -12,16 +12,22 @@ const Marker: FC<Props> = ({
 	draggable = false,
 	position = { lat: 0, lng: 0 },
 	debug = false,
+	id,
+	onClick,
 }) => {
 	const MarkerRef = useRef<ILeafletMarker>(null)
 
-	let events: LeafletEventHandlerFnMap = {}
+	const events: LeafletEventHandlerFnMap = {}
 
 	if (draggable && debug) {
-		events = {
-			dragend() {
-				console.log(MarkerRef?.current?.getLatLng())
-			},
+		events.dragend = () => {
+			console.log(MarkerRef?.current?.getLatLng())
+		}
+	}
+
+	if (onClick) {
+		events.click = () => {
+			onClick(id)
 		}
 	}
 
@@ -30,7 +36,7 @@ const Marker: FC<Props> = ({
 			draggable={draggable}
 			position={position}
 			icon={DefaultIcon}
-			{...(draggable ? { eventHandlers: events } : {})}
+			eventHandlers={events}
 			ref={MarkerRef}
 		></LeafletMarker>
 	)

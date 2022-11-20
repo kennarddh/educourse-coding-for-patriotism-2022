@@ -10,8 +10,9 @@ import LocationLookup from 'Constants/LocationLookup'
 import 'leaflet/dist/leaflet.css'
 
 import { Container } from './Styles'
+import type { Props } from './Types'
 
-const Map: FC = () => {
+const Map: FC<Props> = ({ onMarkerClick }) => {
 	return (
 		<Container>
 			<MapContainer
@@ -32,7 +33,12 @@ const Map: FC = () => {
 					url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 				/>
 				{Object.entries(People).map(([id, person]) => (
-					<Marker key={id} position={LocationLookup[person.origin]} />
+					<Marker
+						key={id}
+						id={id}
+						position={LocationLookup[person.origin]}
+						onClick={onMarkerClick}
+					/>
 				))}
 			</MapContainer>
 		</Container>

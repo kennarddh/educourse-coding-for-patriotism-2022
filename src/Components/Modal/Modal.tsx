@@ -18,7 +18,7 @@ const Modal = forwardRef<IModalHandle, Props>(
 		const ModalContentRef = useRef<HTMLDivElement>()
 
 		const OnClickOutside = () => {
-			document.body.style.overflow = 'unset'
+			document.body.style.overflow = ''
 
 			SetIsOpen(false)
 		}
@@ -55,3 +55,5 @@ const Modal = forwardRef<IModalHandle, Props>(
 Modal.displayName = 'Modal'
 
 export default Modal
+
+export { IModalHandle }

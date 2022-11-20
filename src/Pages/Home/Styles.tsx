@@ -102,3 +102,13 @@ export const Cards = styled.div`
 
 	width: 100%;
 `
+
+export const ModalContent = styled.div`
+	width: 80%;
+	height: 80%;
+
+	border-radius: 24px;
+
+	background-color: #fff7e9;
+	z-index: 9999;
+`

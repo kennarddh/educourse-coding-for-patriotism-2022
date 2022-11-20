@@ -2,6 +2,7 @@ import { ReactNode, JSXElementConstructor, ComponentProps } from 'react'
 
 export interface IModalContainer {
 	backgroundColor: string
+	zIndex: number
 }
 
 export interface Props<
@@ -13,7 +14,7 @@ export interface Props<
 	containerProps: IModalContainer
 	children: ReactNode
 	ModalContent: T
-	contentProps: ComponentProps<T>
+	contentProps?: ComponentProps<T>
 }
 
 export interface IModalHandle {

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 
 import {
 	Header,
@@ -9,14 +9,22 @@ import {
 	HeaderContaienr,
 	Cards,
 	Content,
+	ModalContent,
 } from './Styles'
 
 import Card from 'Components/Card/Card'
 import People from 'Constants/People'
+import Modal, { IModalHandle } from 'Components/Modal/Modal'
 
 import Map from 'Components/Map/Map'
 
 const App: FC = () => {
+	const ModalRef = useRef<IModalHandle>(null)
+
+	const OnMapMarkerClick = () => {
+		ModalRef?.current?.Open()
+	}
+
 	return (
 		<>
 			<Header>
@@ -32,7 +40,7 @@ const App: FC = () => {
 				<Wave src='Waves/HomeWave.png' alt='Wave' />
 			</Header>
 			<Content>
-				<Map />
+				<Map onMarkerClick={OnMapMarkerClick} />
 				<Cards>
 					{Object.entries(People).map(([id, value]) => (
 						<Card
@@ -46,6 +54,14 @@ const App: FC = () => {
 					))}
 				</Cards>
 			</Content>
+			<Modal
+				wrapperId='content-modal'
+				containerProps={{ backgroundColor: '#5F9DF780', zIndex: 9998 }}
+				ModalContent={ModalContent}
+				ref={ModalRef}
+			>
+				<div></div>
+			</Modal>
 		</>
 	)
 }
