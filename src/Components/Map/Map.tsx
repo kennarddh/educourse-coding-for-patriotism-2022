@@ -35,7 +35,7 @@ const Map: FC<Props> = ({ onMarkerClick }) => {
 				{Object.entries(People).map(([id, person]) => (
 					<Marker
 						key={id}
-						id={id}
+						id={person.origin}
 						position={LocationLookup[person.origin]}
 						onClick={onMarkerClick}
 					/>

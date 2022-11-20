@@ -1,4 +1,4 @@
-import { FC, useRef } from 'react'
+import { FC, useRef, useState } from 'react'
 
 import {
 	Header,
@@ -22,14 +22,22 @@ import Modal, { IModalHandle } from 'Components/Modal/Modal'
 
 import Map from 'Components/Map/Map'
 
-const App: FC = () => {
+const Home: FC = () => {
 	const ModalRef = useRef<IModalHandle>(null)
 
-	const OnMapMarkerClick = () => {
+	const [SelectedProvince, SetSelectedProvince] = useState<string | null>(
+		null
+	)
+
+	const OnMapMarkerClick = (province: string) => {
+		SetSelectedProvince(province)
+
 		ModalRef?.current?.Open()
 	}
 
 	const OnCloseModal = () => {
+		SetSelectedProvince(null)
+
 		ModalRef?.current?.Close()
 	}
 
@@ -75,20 +83,24 @@ const App: FC = () => {
 					</ModalCloseButton>
 				</ModalHeader>
 				<ModalCards>
-					{Object.entries(People).map(([id, value]) => (
-						<Card
-							key={id}
-							imagePath={value.image}
-							imageAlt={`${value.name} Portrait`}
-							imageSource={value.imageSource}
-							id={id}
-							name={value.name}
-						/>
-					))}
+					{Object.entries(People)
+						.filter(
+							([, person]) => person.origin === SelectedProvince
+						)
+						.map(([id, value]) => (
+							<Card
+								key={id}
+								imagePath={value.image}
+								imageAlt={`${value.name} Portrait`}
+								imageSource={value.imageSource}
+								id={id}
+								name={value.name}
+							/>
+						))}
 				</ModalCards>
 			</Modal>
 		</>
 	)
 }
 
-export default App
+export default Home

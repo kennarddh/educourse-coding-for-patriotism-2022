@@ -1,6 +1,6 @@
 import { LatLng } from 'leaflet'
 
-const LocationLookup: Record<string, Pick<LatLng, 'lat' | 'lng'>> = {
+const LocationLookup: Readonly<Record<string, Pick<LatLng, 'lat' | 'lng'>>> = {
 	Aceh: { lat: 4.695135, lng: 96.7493993 },
 	SumateraUtara: { lat: 2.1153547, lng: 99.5450974 },
 	SumateraBarat: { lat: -0.7399397, lng: 100.8000051 },
