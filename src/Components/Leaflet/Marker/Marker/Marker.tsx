@@ -2,7 +2,11 @@ import { FC, useRef } from 'react'
 
 import { Marker as LeafletMarker } from 'react-leaflet'
 
-import { LeafletEventHandlerFnMap, Marker as ILeafletMarker } from 'leaflet'
+import {
+	LeafletEventHandlerFnMap,
+	Marker as ILeafletMarker,
+	LeafletKeyboardEvent,
+} from 'leaflet'
 
 import DefaultIcon from 'Components/Leaflet/Marker/Default/Default'
 
@@ -27,6 +31,12 @@ const Marker: FC<Props> = ({
 
 	if (onClick) {
 		events.click = () => {
+			onClick(id)
+		}
+
+		events.keydown = (event: LeafletKeyboardEvent) => {
+			if (event.originalEvent.key !== 'Enter') return
+
 			onClick(id)
 		}
 	}
