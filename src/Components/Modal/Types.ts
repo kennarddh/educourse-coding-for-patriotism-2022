@@ -15,3 +15,8 @@ export interface Props<
 	ModalContent: T
 	contentProps: ComponentProps<T>
 }
+
+export interface IModalHandle {
+	Open: () => void
+	Close: () => void
+}

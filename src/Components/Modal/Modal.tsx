@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef, useState, FC } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 
 import ReactPortal from 'Components/ReactPortal/ReactPortal'
 
@@ -6,9 +6,9 @@ import useClickOutside from 'Hooks/useClickOutside'
 
 import { ModalContainer } from './Styles'
 
-import type { Props } from './Types'
+import type { Props, IModalHandle } from './Types'
 
-const Modal: FC<Props> = forwardRef(
+const Modal = forwardRef<IModalHandle, Props>(
 	(
 		{ wrapperId, containerProps, contentProps, children, ModalContent },
 		ref
