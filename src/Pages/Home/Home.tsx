@@ -10,6 +10,10 @@ import {
 	Cards,
 	Content,
 	ModalContent,
+	ModalCards,
+	ModalHeader,
+	ModalTitle,
+	ModalCloseButton,
 } from './Styles'
 
 import Card from 'Components/Card/Card'
@@ -23,6 +27,10 @@ const App: FC = () => {
 
 	const OnMapMarkerClick = () => {
 		ModalRef?.current?.Open()
+	}
+
+	const OnCloseModal = () => {
+		ModalRef?.current?.Close()
 	}
 
 	return (
@@ -60,7 +68,44 @@ const App: FC = () => {
 				ModalContent={ModalContent}
 				ref={ModalRef}
 			>
-				<div></div>
+				<ModalHeader>
+					<ModalTitle>Jawa Timur</ModalTitle>
+					<ModalCloseButton onClick={OnCloseModal}>
+						Tutup
+					</ModalCloseButton>
+				</ModalHeader>
+				<ModalCards>
+					{Object.entries(People).map(([id, value]) => (
+						<Card
+							key={id}
+							imagePath={value.image}
+							imageAlt={`${value.name} Portrait`}
+							imageSource={value.imageSource}
+							id={id}
+							name={value.name}
+						/>
+					))}
+					{Object.entries(People).map(([id, value]) => (
+						<Card
+							key={id}
+							imagePath={value.image}
+							imageAlt={`${value.name} Portrait`}
+							imageSource={value.imageSource}
+							id={id}
+							name={value.name}
+						/>
+					))}
+					{Object.entries(People).map(([id, value]) => (
+						<Card
+							key={id}
+							imagePath={value.image}
+							imageAlt={`${value.name} Portrait`}
+							imageSource={value.imageSource}
+							id={id}
+							name={value.name}
+						/>
+					))}
+				</ModalCards>
 			</Modal>
 		</>
 	)

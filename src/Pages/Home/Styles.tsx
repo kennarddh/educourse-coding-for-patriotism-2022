@@ -111,4 +111,57 @@ export const ModalContent = styled.div`
 
 	background-color: #fff7e9;
 	z-index: 9999;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+`
+
+export const ModalCards = styled(Cards)`
+	overflow-y: scroll;
+
+	height: 90%;
+
+	padding: 12px 0;
+`
+
+export const ModalHeader = styled.div`
+	height: 10%;
+
+	background-color: #ff731d;
+	width: 100%;
+
+	border-radius: 24px 24px 0 0;
+
+	display: flex;
+
+	justify-content: space-evenly;
+	align-items: center;
+`
+
+export const ModalTitle = styled.h3`
+	color: #fff7e9;
+	font-size: 30px;
+`
+
+export const ModalCloseButton = styled.button`
+	color: #fff7e9;
+	border-radius: 8px;
+	border: none;
+	background-color: transparent;
+	font-size: 24px;
+	font-weight: 600;
+
+	padding: 2px 4px;
+
+	cursor: pointer;
+
+	&:focus {
+		outline: 5px solid #5f9df7;
+	}
+
+	&:hover {
+		outline: 5px solid #5f9df7;
+	}
 `
