@@ -21,6 +21,7 @@ import People from 'Constants/People'
 import LocationLookup from 'Constants/LocationLookup'
 import Modal, { IModalHandle } from 'Components/Modal/Modal'
 import Footer from 'Components/Footer/Footer'
+import BackToTop from 'Components/BackToTop/BackToTop'
 
 import Map from 'Components/Map/Map'
 
@@ -104,6 +105,7 @@ const Home: FC = () => {
 				</ModalCards>
 			</Modal>
 			<Footer />
+			<BackToTop />
 		</>
 	)
 }

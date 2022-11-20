@@ -6,6 +6,7 @@ import PagesContext from 'Contexts/Pages/Pages'
 import People from 'Constants/People'
 
 import Footer from 'Components/Footer/Footer'
+import BackToTop from 'Components/BackToTop/BackToTop'
 
 import {
 	Header,
@@ -58,7 +59,7 @@ const Article: FC = () => {
 					<Text>{People[SelectedArticleId].article}</Text>
 				</TextContainer>
 			</Content>
-			<Footer />
+			<Footer /> <BackToTop />
 		</>
 	)
 }

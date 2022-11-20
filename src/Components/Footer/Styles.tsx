@@ -27,6 +27,7 @@ export const Text = styled.p`
 	font-size: 20px;
 	font-weight: 600;
 	padding: 0 0 50px 50px;
+	text-align: center;
 
 	@media only screen and (max-width: 700px) {
 		padding: 0;
