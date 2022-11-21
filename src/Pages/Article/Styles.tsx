@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import type { IHighlightSpan } from './Types'
 
 export const Header = styled.h1`
 	position: fixed;
@@ -76,4 +78,34 @@ export const TextContainer = styled.div`
 
 export const Text = styled.p`
 	white-space: pre-line;
+`
+
+export const HighlightIcon = styled.img`
+	width: 100%;
+	height: 100%;
+`
+
+export const Highlight = styled.button`
+	position: fixed;
+	bottom: 100px;
+	right: 25px;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: transparent;
+	cursor: pointer;
+	border: 5px solid #1746a2;
+`
+
+export const HighlightSpan = styled.span<IHighlightSpan>`
+	${({ highlight }) =>
+		highlight
+			? css`
+					background-color: #5f9df7;
+			  `
+			: ''}
 `
