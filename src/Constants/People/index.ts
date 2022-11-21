@@ -8,6 +8,13 @@ import Pattimura from './Pattimura'
 import RadenAjengKartini from './RadenAjengKartini'
 import RadenDewiSartika from './RadenDewiSartika'
 import CutNyakMeutia from './CutNyakMeutia'
+import PangeranAntasari from './PangeranAntasari'
+import AbdulKadirRaden from './AbdulKadirRaden'
+import HermanJohannes from './HermanJohannes'
+import FransKaisiepo from './FransKaisiepo'
+import JohannesAbrahamDimara from './JohannesAbrahamDimara'
+import IGustiNgurahRai from './IGustiNgurahRai'
+import SultanMahmudBadaruddinII from './SultanMahmudBadaruddinII'
 
 import { IPeople } from './Types'
 
@@ -22,6 +29,13 @@ const People: IPeople = {
 	'3185d11d-a1f6-4b96-9d51-8d6694ab934f': RadenAjengKartini,
 	'9e2845b4-c2aa-4945-b60a-58b2459a5f82': RadenDewiSartika,
 	'217f6981-e641-4b72-9c65-1ee1a4989d02': CutNyakMeutia,
+	'4c100ab6-8df7-42c9-81e4-061a4d7ac5da': PangeranAntasari,
+	'5ebdfa97-4050-4d19-8bcb-b84a1b11a3ba': AbdulKadirRaden,
+	'268e2344-b0fc-41ec-9719-34e3d5db4002': HermanJohannes,
+	'fbcad25c-e40f-4183-a3e7-51250d7e7944': FransKaisiepo,
+	'b296b9a1-f7a5-4617-b005-7dd7f3dd5975': JohannesAbrahamDimara,
+	'04714f6e-35a9-4f6b-81c7-65af1c852c8c': IGustiNgurahRai,
+	'b622b33d-723f-4e3c-ba42-a704cc9274ef': SultanMahmudBadaruddinII,
 }
 
 export default People
