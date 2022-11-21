@@ -84,7 +84,12 @@ const Home: FC = () => {
 			>
 				<ModalHeader>
 					<ModalTitle>
-						{LocationLookup[SelectedProvince ?? '']?.title}
+						{
+							// eslint-disable-next-line @typescript-eslint/no-explicit-any
+							(LocationLookup as any)[
+								SelectedProvince ?? 'JawaBarat'
+							]?.title
+						}
 					</ModalTitle>
 					<ModalCloseButton onClick={OnCloseModal}>
 						Tutup

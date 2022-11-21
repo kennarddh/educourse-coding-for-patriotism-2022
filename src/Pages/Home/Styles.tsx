@@ -105,7 +105,7 @@ export const Cards = styled.div`
 
 export const ModalContent = styled.div`
 	width: 80%;
-	height: 80%;
+	height: 90%;
 
 	border-radius: 24px;
 
@@ -124,6 +124,27 @@ export const ModalCards = styled(Cards)`
 	height: 90%;
 
 	padding: 12px 0;
+
+	/* Firefox scroll */
+	@supports (-moz-appearance: none) {
+		scrollbar-width: auto;
+		scrollbar-color: #1746a2 #5f9df7;
+	}
+
+	/* Webkit scroll */
+	&::-webkit-scrollbar {
+		width: 24px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: #5f9df7;
+		border-radius: 0 0 24px 0;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: #1746a2;
+		border-radius: 0 0 24px 0;
+	}
 `
 
 export const ModalHeader = styled.div`
