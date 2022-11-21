@@ -15,6 +15,8 @@ import FransKaisiepo from './FransKaisiepo'
 import JohannesAbrahamDimara from './JohannesAbrahamDimara'
 import IGustiNgurahRai from './IGustiNgurahRai'
 import SultanMahmudBadaruddinII from './SultanMahmudBadaruddinII'
+import AbdulHalim from './AbdulHalim'
+import OemarSaidTjokroaminoto from './OemarSaidTjokroaminoto'
 
 import { IPeople } from './Types'
 
@@ -36,6 +38,8 @@ const People: IPeople = {
 	'b296b9a1-f7a5-4617-b005-7dd7f3dd5975': JohannesAbrahamDimara,
 	'04714f6e-35a9-4f6b-81c7-65af1c852c8c': IGustiNgurahRai,
 	'b622b33d-723f-4e3c-ba42-a704cc9274ef': SultanMahmudBadaruddinII,
+	'06ba3452-643c-436e-afee-744ae2a50a4b': AbdulHalim,
+	'4f6e92a5-7f46-4275-b127-fb23a427091d': OemarSaidTjokroaminoto,
 }
 
 export default People
