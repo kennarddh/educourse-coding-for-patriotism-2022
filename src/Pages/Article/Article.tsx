@@ -56,6 +56,10 @@ const Article: FC = () => {
 
 	const OnHighlight = () => {
 		const selection: Selection | null = getSelection()
+
+		if (selection?.rangeCount === 0)
+			return alert('Tidak ada teks yang di seleksi')
+
 		const range = selection?.getRangeAt(0)
 		const cloneContentsChildren = range?.cloneContents().children
 		const commonAncestorContainer = range?.commonAncestorContainer
