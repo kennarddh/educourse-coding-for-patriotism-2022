@@ -24,7 +24,7 @@ import {
 	HighlightSpan,
 } from './Styles'
 
-import type { IHighlightData } from './Types'
+import type { IHighlightData, ILocalStorageHighlightData } from './Types'
 
 const Article: FC = () => {
 	const { SetSelectedArticleId, SelectedArticleId } = useContext(PagesContext)
@@ -33,7 +33,17 @@ const Article: FC = () => {
 		const data =
 			localStorage.getItem(`highlights-${SelectedArticleId}`) ?? '[]'
 
-		return new Set(JSON.parse(data))
+		const parsed: ILocalStorageHighlightData = JSON.parse(data)
+
+		const result = parsed.reduce<number[]>((acc, [start, end]) => {
+			for (let i = start; i <= end; i++) {
+				acc.push(i)
+			}
+
+			return acc
+		}, [])
+
+		return new Set(result)
 	})
 
 	const TextRef = useRef<HTMLParagraphElement>(null)
@@ -118,9 +128,22 @@ const Article: FC = () => {
 	}, [])
 
 	useEffect(() => {
+		const data = [...HighlightData].reduce<ILocalStorageHighlightData>(
+			(acc, value) => {
+				if (value - 1 === acc.at(-1)?.[1]) {
+					acc[acc.length - 1][1] = value
+				} else {
+					acc.push([value, value])
+				}
+
+				return acc
+			},
+			[]
+		)
+
 		localStorage.setItem(
 			`highlights-${SelectedArticleId}`,
-			JSON.stringify([...HighlightData])
+			JSON.stringify(data)
 		)
 	}, [HighlightData, SelectedArticleId])
 
