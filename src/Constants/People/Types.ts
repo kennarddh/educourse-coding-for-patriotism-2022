@@ -1,6 +1,8 @@
+import type { ILocationLookup } from 'Constants/LocationLookup'
+
 export interface IPerson {
 	name: string
-	origin: string
+	origin: keyof ILocationLookup
 	image: string
 	thumbnail: string
 	article: string

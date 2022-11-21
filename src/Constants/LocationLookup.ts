@@ -1,8 +1,4 @@
-import { LatLng } from 'leaflet'
-
-const LocationLookup: Readonly<
-	Record<string, Pick<LatLng, 'lat' | 'lng'> & { title: string }>
-> = {
+const LocationLookup = {
 	Aceh: { lat: 4.695135, lng: 96.7493993, title: 'Aceh' },
 	SumateraUtara: { lat: 2.1153547, lng: 99.5450974, title: 'Sumatera Utara' },
 	SumateraBarat: {
@@ -100,6 +96,8 @@ const LocationLookup: Readonly<
 	MalukuUtara: { lat: 1.5709993, lng: 127.8087693, title: 'Maluku Utara' },
 	PapuaBarat: { lat: -1.3361154, lng: 133.1747162, title: 'Papua Barat' },
 	Papua: { lat: -4.269928, lng: 138.0803529, title: 'Papua' },
-}
+} as const
 
 export default LocationLookup
+
+export type ILocationLookup = typeof LocationLookup
