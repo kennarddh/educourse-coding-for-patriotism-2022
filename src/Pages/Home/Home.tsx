@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useRef, useState, useEffect } from 'react'
 
 import {
 	Header,
@@ -35,6 +35,8 @@ const Home: FC = () => {
 		null
 	)
 
+	const [, SetDimensions] = useState<number>(0)
+
 	const OnMapMarkerClick = (province: string) => {
 		SetSelectedProvince(province)
 
@@ -46,6 +48,16 @@ const Home: FC = () => {
 
 		ModalRef?.current?.Close()
 	}
+
+	useEffect(() => {
+		const HandleResize = () => {
+			SetDimensions(Math.random())
+		}
+
+		window.addEventListener('resize', HandleResize)
+
+		return () => window.removeEventListener('resize', HandleResize)
+	}, [])
 
 	return (
 		<>
