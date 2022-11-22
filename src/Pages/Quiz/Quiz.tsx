@@ -23,6 +23,8 @@ import {
 	Text,
 	Answers,
 	Answer,
+	HowToPlay,
+	TitleWrapper,
 } from './Styles'
 
 const Quiz: FC = () => {
@@ -146,7 +148,16 @@ const Quiz: FC = () => {
 				<BackButton onClick={OnBack}>Kembali</BackButton>
 			</Header>
 			<Content>
-				<Title>Kuis</Title>
+				<TitleWrapper>
+					<Title>Kuis</Title>
+					<HowToPlay
+						title='Penilaian
+Jika Benar Skor Ditambah Waktu Tersisa
+Jika Salah Skor Dikurang (Waktu Untuk Menjawab Dikurang Waktu Tersisa)'
+					>
+						<p>?</p>
+					</HowToPlay>
+				</TitleWrapper>
 				<QuizContainer>
 					<QuizContainerHeader>
 						<Question>

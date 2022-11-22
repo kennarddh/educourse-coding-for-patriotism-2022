@@ -145,3 +145,27 @@ export const Answer = styled.button<IStyledAnswer>`
 		outline: 5px solid #ff731d;
 	}
 `
+
+export const HowToPlay = styled.div`
+	border-radius: 50%;
+	border: 5px solid #ff731d;
+
+	width: 40px;
+	height: 40px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-size: 30px;
+	font-weight: 600;
+`
+
+export const TitleWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+
+	flex-direction: row;
+`
