@@ -5,10 +5,17 @@ export interface IAnswer {
 
 export type IAnswers = IAnswer[]
 
+/**
+ * IQuizQuestion interface
+ *
+ * @interface IQuizQuestion
+ * @member {number} time Time limit to answer is seconds
+ */
 export interface IQuizQuestion {
 	question: string
 	correctAnswer: string
 	answers: IAnswers
+	time: number
 }
 
 export interface IQuiz {

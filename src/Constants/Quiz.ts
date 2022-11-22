@@ -4,6 +4,7 @@ const Quiz: IQuiz = {
 	'56b9c90d-857c-4b40-bcd8-1b38ba88799d': {
 		question: 'Dr. Ir. H. Soekano berasal dari?',
 		correctAnswer: '91cd34bc-ddbd-405a-9403-1cdd46b2d6fa',
+		time: 10,
 		answers: [
 			{
 				id: '91cd34bc-ddbd-405a-9403-1cdd46b2d6fa',
