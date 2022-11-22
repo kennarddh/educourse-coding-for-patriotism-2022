@@ -15,6 +15,13 @@ const Footer: FC = () => {
 				>
 					Quiz icons created by Freepik - Flaticon
 				</Text>
+				<Text
+					as='a'
+					href='https://www.flaticon.com/free-icons/delete'
+					title='delete icons'
+				>
+					Delete icons created by Kiranshastry - Flaticon
+				</Text>
 			</Container>
 		</Wrapper>
 	)

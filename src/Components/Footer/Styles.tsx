@@ -33,7 +33,7 @@ export const Text = styled.p`
 	color: #fff7e9;
 	font-size: 20px;
 	font-weight: 600;
-	padding: 0 0 50px 0;
+	padding: 16px 0;
 
 	@media only screen and (max-width: 700px) {
 		padding: 0;

@@ -109,3 +109,12 @@ export const HighlightSpan = styled.span<IHighlightSpan>`
 			  `
 			: ''}
 `
+
+export const ClearHighlightIcon = styled.img`
+	width: 75%;
+	height: 75%;
+`
+
+export const ClearHighlight = styled(Highlight)`
+	bottom: 250px;
+`

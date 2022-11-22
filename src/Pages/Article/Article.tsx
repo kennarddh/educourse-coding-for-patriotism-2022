@@ -22,6 +22,8 @@ import {
 	HighlightIcon,
 	Highlight,
 	HighlightSpan,
+	ClearHighlight,
+	ClearHighlightIcon,
 } from './Styles'
 
 import type { IHighlightData, ILocalStorageHighlightData } from './Types'
@@ -126,6 +128,10 @@ const Article: FC = () => {
 		selection?.removeAllRanges()
 	}
 
+	const OnClearHighlight = () => {
+		SetHighlightData(new Set())
+	}
+
 	useEffect(() => {
 		window.scrollTo(0, 0)
 	}, [])
@@ -218,9 +224,15 @@ const Article: FC = () => {
 			<Highlight onClick={OnHighlight}>
 				<HighlightIcon
 					src='Stabilo.png'
-					title='Sumber ikon https://thenounproject.com/icon/stabilo-2348306/'
+					title='Highlight | Sumber ikon https://thenounproject.com/icon/stabilo-2348306/'
 				/>
 			</Highlight>
+			<ClearHighlight onClick={OnClearHighlight}>
+				<ClearHighlightIcon
+					src='TrashBin.png'
+					title='Hapus Semua Highlight | Sumber ikon https://www.flaticon.com/free-icon/delete_1214428'
+				/>
+			</ClearHighlight>
 			<QuizIcon />
 		</>
 	)
