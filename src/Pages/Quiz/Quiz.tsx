@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import { FC, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { FC, useCallback, useContext, useEffect, useState } from 'react'
 
 import QuizQuestion from 'Constants/Quiz'
 
@@ -35,15 +35,10 @@ const Quiz: FC = () => {
 		return parseInt(data, 10)
 	})
 
-	const [TimeLeft, SetTimeLeft] = useState<number>(0)
-
 	const [QuestionId, SetQuestionId] = useState<string>('')
 	const [AnswerChoices, SetAnswerChoices] = useState<string[]>([''])
 
 	const [IsAnswered, SetIsAnswered] = useState<boolean>(false)
-
-	const LastIdRef = useRef<string>('')
-	const IntervalIdRef = useRef<number>(0)
 
 	useTitle('Kuis')
 
@@ -55,27 +50,27 @@ const Quiz: FC = () => {
 		SetIsAnswered(false)
 
 		SetQuestionId(prev => {
-			return PickUnique(Object.keys(QuizQuestion), prev)
+			const id = PickUnique(Object.keys(QuizQuestion), prev)
+
+			SetAnswerChoices(Shuffle([...QuizQuestion[id].answers]))
+
+			return id
 		})
 	}, [])
 
 	const OnAnswer = useCallback(
-		(answer: string) => {
+		(answer: string | null) => {
 			if (IsAnswered) return
 
 			if ([...QuizQuestion[QuestionId].answers][0] === answer) {
 				// Correct
-
 				SetScore(prev => prev + 1)
 			} else {
 				// Wrong
-
 				SetScore(prev => (prev <= 0 ? prev : prev - 1))
 			}
 
 			SetIsAnswered(true)
-
-			clearInterval(IntervalIdRef.current)
 
 			setTimeout(() => {
 				ChangeQuestion()
@@ -91,40 +86,6 @@ const Quiz: FC = () => {
 	useEffect(() => {
 		ChangeQuestion()
 	}, [ChangeQuestion])
-
-	useEffect(() => {
-		if (!Object.keys(QuizQuestion).includes(QuestionId)) return
-
-		LastIdRef.current = QuestionId
-
-		SetAnswerChoices(Shuffle([...QuizQuestion[QuestionId].answers]))
-
-		SetTimeLeft(QuizQuestion[QuestionId].time)
-
-		IntervalIdRef.current = setInterval(() => {
-			SetTimeLeft(prev => {
-				if (prev <= 0 && LastIdRef.current === QuestionId) {
-					SetIsAnswered(true)
-
-					SetScore(prevScore => {
-						return prevScore <= 0 ? prevScore : prevScore - 1
-					})
-
-					clearInterval(IntervalIdRef.current)
-
-					setTimeout(() => {
-						ChangeQuestion()
-					}, 2000)
-
-					return 0
-				} else {
-					return prev - 1
-				}
-			})
-		}, 1000)
-
-		return () => clearInterval(IntervalIdRef.current)
-	}, [ChangeQuestion, QuestionId])
 
 	useEffect(() => {
 		SetHighScore(prev => (Score > prev ? Score : prev))
@@ -149,7 +110,6 @@ const Quiz: FC = () => {
 						<QuizContainerHeaderLeft>
 							<Text>Skor Tertinggi: {HighScore}</Text>
 							<Text>Skor: {Score}</Text>
-							<Text>Waktu : {TimeLeft}</Text>
 						</QuizContainerHeaderLeft>
 					</QuizContainerHeader>
 					<Answers>
