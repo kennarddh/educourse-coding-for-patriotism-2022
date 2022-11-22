@@ -48,8 +48,6 @@ const Quiz: FC = () => {
 
 			LastIdRef.current = newId
 
-			console.log({ prev, newId })
-
 			SetAnswerChoices(Shuffle([...QuizQuestion[newId].answers]))
 
 			SetTimeLeft(QuizQuestion[newId].time)
@@ -93,8 +91,6 @@ const Quiz: FC = () => {
 		const intervalId = setInterval(() => {
 			SetTimeLeft(prev => {
 				if (prev <= 0 && LastIdRef.current === QuestionId) {
-					console.log('end')
-
 					ChangeQuestion(true)
 
 					return 0
