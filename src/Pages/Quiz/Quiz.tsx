@@ -84,7 +84,7 @@ const Quiz: FC = () => {
 
 			setTimeout(() => {
 				ChangeQuestion()
-			}, 1000)
+			}, 2000)
 		},
 		[ChangeQuestion, IsAnswered, QuestionId]
 	)
@@ -98,14 +98,14 @@ const Quiz: FC = () => {
 	}, [ChangeQuestion])
 
 	useEffect(() => {
-		const intervalId = setInterval(() => {
+		const IntervalIdRef = setInterval(() => {
 			SetTimeLeft(prev => {
 				if (prev <= 0 && LastIdRef.current === QuestionId) {
 					SetIsAnswered(true)
 
 					setTimeout(() => {
 						ChangeQuestion(true)
-					}, 1000)
+					}, 2000)
 
 					return 0
 				} else {
