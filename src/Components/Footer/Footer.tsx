@@ -22,6 +22,13 @@ const Footer: FC = () => {
 				>
 					Delete icons created by Kiranshastry - Flaticon
 				</Text>
+				<Text>Dibuat oleh Kennard Deven Huang</Text>
+				<Text>
+					Email:{' '}
+					<Text as='a' href='mailto:kennarddevenh@gmail.com'>
+						kennarddevenh@gmail.com
+					</Text>
+				</Text>
 			</Container>
 		</Wrapper>
 	)
