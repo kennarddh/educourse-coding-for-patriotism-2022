@@ -1,9 +1,4 @@
-export interface IAnswer {
-	id: string
-	value: string
-}
-
-export type IAnswers = IAnswer[]
+export type IAnswers = string[]
 
 /**
  * IQuizQuestion interface
@@ -13,7 +8,6 @@ export type IAnswers = IAnswer[]
  */
 export interface IQuizQuestion {
 	question: string
-	correctAnswer: string
 	answers: IAnswers
 	time: number
 }
