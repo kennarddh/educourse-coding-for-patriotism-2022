@@ -37,6 +37,7 @@ const Quiz: FC = () => {
 	const [IsAnswered, SetIsAnswered] = useState<boolean>(false)
 
 	const LastIdRef = useRef<string>('')
+	const IntervalIdRef = useRef<number>(0)
 
 	useTitle('Kuis')
 
@@ -82,6 +83,8 @@ const Quiz: FC = () => {
 
 			SetIsAnswered(true)
 
+			clearInterval(IntervalIdRef.current)
+
 			setTimeout(() => {
 				ChangeQuestion()
 			}, 2000)
@@ -98,7 +101,7 @@ const Quiz: FC = () => {
 	}, [ChangeQuestion])
 
 	useEffect(() => {
-		const IntervalIdRef = setInterval(() => {
+		IntervalIdRef.current = setInterval(() => {
 			SetTimeLeft(prev => {
 				if (prev <= 0 && LastIdRef.current === QuestionId) {
 					SetIsAnswered(true)
@@ -114,7 +117,7 @@ const Quiz: FC = () => {
 			})
 		}, 1000)
 
-		return () => clearInterval(intervalId)
+		return () => clearInterval(IntervalIdRef.current)
 	}, [ChangeQuestion, QuestionId])
 
 	return (
