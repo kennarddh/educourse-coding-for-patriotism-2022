@@ -21,3 +21,16 @@ export const Wrapper = styled.div`
 
 	flex-direction: column;
 `
+
+export const Title = styled.p`
+	color: #ff731d;
+
+	font-style: normal;
+	font-weight: 800;
+	font-size: 25px;
+	text-align: center;
+
+	@media only screen and (max-width: 400px) {
+		font-size: 25px;
+	}
+`

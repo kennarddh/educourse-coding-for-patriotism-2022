@@ -207,7 +207,7 @@ export const AboutUsContainer = styled.div`
 	gap: 10px;
 	font-weight: 500;
 
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 
 	width: 60%;
 

@@ -9,13 +9,13 @@ import LocationLookup from 'Constants/LocationLookup'
 
 import 'leaflet/dist/leaflet.css'
 
-import { Container, Wrapper } from './Styles'
+import { Container, Wrapper, Title } from './Styles'
 import type { Props } from './Types'
 
 const Map: FC<Props> = ({ onMarkerClick }) => {
 	return (
 		<Wrapper>
-			<p>Peta interaktif</p>
+			<Title>Peta interaktif</Title>
 			<Container>
 				<MapContainer
 					dragging
