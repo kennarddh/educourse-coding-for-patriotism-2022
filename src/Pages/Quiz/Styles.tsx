@@ -117,7 +117,7 @@ export const Answers = styled.div`
 	flex-wrap: wrap;
 `
 
-export const Answer = styled.div<IStyledAnswer>`
+export const Answer = styled.button<IStyledAnswer>`
 	width: 45%;
 	height: 150px;
 
@@ -130,9 +130,16 @@ export const Answer = styled.div<IStyledAnswer>`
 	color: #fff7e9;
 
 	font-weight: 600;
-
 	font-size: 20px;
+
+	cursor: pointer;
+
+	border: none;
 
 	background-color: ${({ isAnswered = false, isCorrect = false }) =>
 		isAnswered && isCorrect ? '#00dd00' : isAnswered ? '#f00' : '#5f9df7'};
+
+	&:where(:focus, :hover) {
+		outline: 5px solid #ff731d;
+	}
 `
