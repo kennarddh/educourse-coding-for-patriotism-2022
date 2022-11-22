@@ -157,13 +157,19 @@ export const ModalHeader = styled.div`
 
 	display: flex;
 
+	padding: 0 10px;
+
 	justify-content: space-evenly;
 	align-items: center;
 `
 
 export const ModalTitle = styled.h3`
 	color: #fff7e9;
-	font-size: 30px;
+	font-size: 3vmax;
+
+	@media only screen and (min-width: 850px) {
+		font-size: 30px;
+	}
 `
 
 export const ModalCloseButton = styled.button`
