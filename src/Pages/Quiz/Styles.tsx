@@ -139,6 +139,8 @@ export const Answer = styled.button<IStyledAnswer>`
 	background-color: ${({ isAnswered = false, isCorrect = false }) =>
 		isAnswered && isCorrect ? '#00dd00' : isAnswered ? '#f00' : '#5f9df7'};
 
+	transition: background-color 0.5s;
+
 	&:where(:focus, :hover) {
 		outline: 5px solid #ff731d;
 	}
