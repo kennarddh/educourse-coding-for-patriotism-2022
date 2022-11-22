@@ -49,6 +49,23 @@ const Quiz: FC = () => {
 		})
 	}, [])
 
+	const OnAnswer = useCallback(
+		(answer: string) => {
+			if ([...QuizQuestion[QuestionId].answers][0] === answer) {
+				// Correct
+
+				SetScore(prev => prev + 1)
+			} else {
+				// Wrong
+
+				SetScore(prev => (prev <= 0 ? prev : prev - 1))
+			}
+
+			ChangeQuestion()
+		},
+		[ChangeQuestion, QuestionId]
+	)
+
 	useEffect(() => {
 		window.scrollTo(0, 0)
 	}, [])
@@ -76,7 +93,10 @@ const Quiz: FC = () => {
 					</QuizContainerHeader>
 					<Answers>
 						{AnswerChoices.map(choice => (
-							<Answer key={choice}>
+							<Answer
+								key={choice}
+								onClick={() => OnAnswer(choice)}
+							>
 								<p>{choice}</p>
 							</Answer>
 						))}
