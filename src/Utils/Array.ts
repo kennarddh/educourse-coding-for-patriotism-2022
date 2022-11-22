@@ -5,6 +5,16 @@ export const Pick = <T>(array: T[]) => {
 	return array[index]
 }
 
+export const PickUnique = <T>(array: T[], last: T) => {
+	let result: T
+
+	do {
+		result = Pick(array)
+	} while (result === last)
+
+	return result
+}
+
 export const Shuffle = <T>(array: T[]) => {
 	const newArray = [...array]
 
