@@ -29,21 +29,20 @@ const Quiz: FC = () => {
 	const { SetIsQuiz } = useContext(PagesContext)
 
 	const [Score, SetScore] = useState<number>(0)
+	const [TimeLeft, SetTimeLeft] = useState<number>(0)
 	const [HighScore, SetHighScore] = useState<number>(() => {
 		const data = localStorage.getItem('quizHighScore') ?? '0'
 
 		return parseInt(data, 10)
 	})
 
-	const [TimeLeft, SetTimeLeft] = useState<number>(0)
-
 	const [QuestionId, SetQuestionId] = useState<string>('')
 	const [AnswerChoices, SetAnswerChoices] = useState<string[]>([''])
 
 	const [IsAnswered, SetIsAnswered] = useState<boolean>(false)
 
-	const LastIdRef = useRef<string>('')
-	const IntervalIdRef = useRef<number>(0)
+	const IntervalRef = useRef<number>(0)
+	const TimeoutRef = useRef<number>(0)
 
 	useTitle('Kuis')
 
@@ -51,45 +50,33 @@ const Quiz: FC = () => {
 		SetIsQuiz(false)
 	}
 
-	const ChangeQuestion = useCallback((timeOut = false) => {
+	const ChangeQuestion = useCallback(() => {
 		SetIsAnswered(false)
 
 		SetQuestionId(prev => {
-			const newId = PickUnique(Object.keys(QuizQuestion), prev)
+			const id = PickUnique(Object.keys(QuizQuestion), prev)
 
-			LastIdRef.current = newId
+			SetAnswerChoices(Shuffle([...QuizQuestion[id].answers]))
 
-			SetAnswerChoices(Shuffle([...QuizQuestion[newId].answers]))
+			SetTimeLeft(QuizQuestion[id].time)
 
-			SetTimeLeft(QuizQuestion[newId].time)
-
-			if (timeOut) {
-				SetScore(prev => {
-					return prev <= 0 ? prev : prev - 1
-				})
-			}
-
-			return newId
+			return id
 		})
 	}, [])
 
 	const OnAnswer = useCallback(
-		(answer: string) => {
+		(answer: string | null) => {
 			if (IsAnswered) return
 
 			if ([...QuizQuestion[QuestionId].answers][0] === answer) {
 				// Correct
-
 				SetScore(prev => prev + 1)
 			} else {
 				// Wrong
-
 				SetScore(prev => (prev <= 0 ? prev : prev - 1))
 			}
 
 			SetIsAnswered(true)
-
-			clearInterval(IntervalIdRef.current)
 
 			setTimeout(() => {
 				ChangeQuestion()
@@ -107,32 +94,39 @@ const Quiz: FC = () => {
 	}, [ChangeQuestion])
 
 	useEffect(() => {
-		IntervalIdRef.current = setInterval(() => {
-			SetTimeLeft(prev => {
-				if (prev <= 0 && LastIdRef.current === QuestionId) {
-					SetIsAnswered(true)
-
-					setTimeout(() => {
-						ChangeQuestion(true)
-					}, 2000)
-
-					return 0
-				} else {
-					return prev - 1
-				}
-			})
-		}, 1000)
-
-		return () => clearInterval(IntervalIdRef.current)
-	}, [ChangeQuestion, QuestionId])
-
-	useEffect(() => {
 		SetHighScore(prev => (Score > prev ? Score : prev))
 	}, [Score])
 
 	useEffect(() => {
 		localStorage.setItem('quizHighScore', HighScore.toString())
 	}, [HighScore])
+
+	useEffect(() => {
+		if (!IsAnswered) return
+
+		clearTimeout(TimeoutRef.current)
+	}, [IsAnswered])
+
+	useEffect(() => {
+		IntervalRef.current = setInterval(() => {
+			if (IsAnswered) return
+
+			SetTimeLeft(prev => (prev > 0 ? prev - 1 : prev))
+		}, 1000)
+
+		return () => clearInterval(IntervalRef.current)
+	}, [IsAnswered])
+
+	useEffect(() => {
+		if (!QuestionId) return
+
+		TimeoutRef.current = setTimeout(() => {
+			// Wrong
+			OnAnswer(null)
+		}, QuizQuestion[QuestionId].time * 1000)
+
+		return () => clearTimeout(TimeoutRef.current)
+	}, [OnAnswer, QuestionId])
 
 	return (
 		<>
@@ -149,7 +143,7 @@ const Quiz: FC = () => {
 						<QuizContainerHeaderLeft>
 							<Text>Skor Tertinggi: {HighScore}</Text>
 							<Text>Skor: {Score}</Text>
-							<Text>Waktu : {TimeLeft}</Text>
+							<Text>Waktu: {TimeLeft}</Text>
 						</QuizContainerHeaderLeft>
 					</QuizContainerHeader>
 					<Answers>

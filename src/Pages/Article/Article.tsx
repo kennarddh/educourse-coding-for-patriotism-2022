@@ -67,8 +67,6 @@ const Article: FC = () => {
 
 		const newSet = new Set(HighlightData)
 
-		console.log({ selection, range, cloneContentsChildren })
-
 		if (cloneContentsChildren?.length === 0) {
 			// Select in one group
 
