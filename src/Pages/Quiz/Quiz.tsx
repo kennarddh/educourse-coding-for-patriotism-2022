@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import { FC, useCallback, useContext, useEffect, useState } from 'react'
+import { FC, useCallback, useContext, useEffect, useRef, useState } from 'react'
 
 import QuizQuestion from 'Constants/Quiz'
 
@@ -29,9 +29,12 @@ const Quiz: FC = () => {
 	const { SetIsQuiz } = useContext(PagesContext)
 
 	const [Score, SetScore] = useState<number>(0)
+	const [TimeLeft, SetTimeLeft] = useState<number>(0)
 
 	const [QuestionId, SetQuestionId] = useState<string>('')
 	const [AnswerChoices, SetAnswerChoices] = useState<string[]>([''])
+
+	const LastIdRef = useRef<string>('')
 
 	useTitle('Kuis')
 
@@ -39,11 +42,23 @@ const Quiz: FC = () => {
 		SetIsQuiz(false)
 	}
 
-	const ChangeQuestion = useCallback(() => {
+	const ChangeQuestion = useCallback((timeOut = false) => {
 		SetQuestionId(prev => {
 			const newId = PickUnique(Object.keys(QuizQuestion), prev)
 
+			LastIdRef.current = newId
+
+			console.log({ prev, newId })
+
 			SetAnswerChoices(Shuffle([...QuizQuestion[newId].answers]))
+
+			SetTimeLeft(QuizQuestion[newId].time)
+
+			if (timeOut) {
+				SetScore(prev => {
+					return prev <= 0 ? prev : prev - 1
+				})
+			}
 
 			return newId
 		})
@@ -74,6 +89,24 @@ const Quiz: FC = () => {
 		ChangeQuestion()
 	}, [ChangeQuestion])
 
+	useEffect(() => {
+		const intervalId = setInterval(() => {
+			SetTimeLeft(prev => {
+				if (prev <= 0 && LastIdRef.current === QuestionId) {
+					console.log('end')
+
+					ChangeQuestion(true)
+
+					return 0
+				} else {
+					return prev - 1
+				}
+			})
+		}, 1000)
+
+		return () => clearInterval(intervalId)
+	}, [ChangeQuestion, QuestionId])
+
 	return (
 		<>
 			<Header>
@@ -88,7 +121,7 @@ const Quiz: FC = () => {
 						</Question>
 						<QuizContainerHeaderLeft>
 							<Text>Skor: {Score}</Text>
-							<Text>Waktu : 10</Text>
+							<Text>Waktu : {TimeLeft}</Text>
 						</QuizContainerHeaderLeft>
 					</QuizContainerHeader>
 					<Answers>
