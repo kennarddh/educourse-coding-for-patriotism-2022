@@ -29,6 +29,12 @@ const Quiz: FC = () => {
 	const { SetIsQuiz } = useContext(PagesContext)
 
 	const [Score, SetScore] = useState<number>(0)
+	const [HighScore, SetHighScore] = useState<number>(() => {
+		const data = localStorage.getItem('quizHighScore') ?? '0'
+
+		return parseInt(data, 10)
+	})
+
 	const [TimeLeft, SetTimeLeft] = useState<number>(0)
 
 	const [QuestionId, SetQuestionId] = useState<string>('')
@@ -120,6 +126,14 @@ const Quiz: FC = () => {
 		return () => clearInterval(IntervalIdRef.current)
 	}, [ChangeQuestion, QuestionId])
 
+	useEffect(() => {
+		SetHighScore(prev => (Score > prev ? Score : prev))
+	}, [Score])
+
+	useEffect(() => {
+		localStorage.setItem('quizHighScore', HighScore.toString())
+	}, [HighScore])
+
 	return (
 		<>
 			<Header>
@@ -133,6 +147,7 @@ const Quiz: FC = () => {
 							{QuizQuestion[QuestionId]?.question ?? ''}
 						</Question>
 						<QuizContainerHeaderLeft>
+							<Text>Skor Tertinggi: {HighScore}</Text>
 							<Text>Skor: {Score}</Text>
 							<Text>Waktu : {TimeLeft}</Text>
 						</QuizContainerHeaderLeft>
