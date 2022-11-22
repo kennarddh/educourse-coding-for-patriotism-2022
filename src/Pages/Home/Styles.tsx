@@ -89,6 +89,10 @@ export const Content = styled.main`
 	width: 100%;
 
 	padding: 48px;
+
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 `
 
 export const Cards = styled.div`
@@ -191,4 +195,43 @@ export const ModalCloseButton = styled.button`
 	&:hover {
 		outline: 5px solid #5f9df7;
 	}
+`
+
+export const AboutUsContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	flex-direction: column;
+
+	gap: 10px;
+	font-weight: 500;
+
+	margin-bottom: 20px;
+
+	width: 60%;
+
+	@media only screen and (max-width: 700px) {
+		width: 90%;
+	}
+`
+
+export const AboutUsTitle = styled.h3`
+	color: #ff731d;
+
+	font-style: normal;
+	font-weight: 800;
+	font-size: 30px;
+	text-align: center;
+
+	@media only screen and (max-width: 400px) {
+		font-size: 25px;
+	}
+`
+
+export const AboutUsContent = styled.p`
+	color: #ff731d;
+
+	font-size: 20px;
+	text-align: center;
 `

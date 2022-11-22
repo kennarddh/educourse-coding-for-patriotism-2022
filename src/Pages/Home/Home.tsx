@@ -14,6 +14,9 @@ import {
 	ModalHeader,
 	ModalTitle,
 	ModalCloseButton,
+	AboutUsContainer,
+	AboutUsTitle,
+	AboutUsContent,
 } from './Styles'
 
 import Card from 'Components/Card/Card'
@@ -75,6 +78,26 @@ const Home: FC = () => {
 				<Wave src='Waves/HomeWave.png' alt='Wave' />
 			</Header>
 			<Content>
+				<AboutUsContainer>
+					<AboutUsTitle>About Us</AboutUsTitle>
+					<AboutUsContent>
+						Lorem ipsum, dolor sit amet consectetur adipisicing
+						elit. Quaerat aut vero inventore nemo quia ex optio sunt
+						totam quas incidunt deserunt dolore soluta suscipit
+						neque repudiandae, iusto similique corporis eos culpa!
+						Quo distinctio vel tempora ratione inventore saepe
+						quidem expedita odio ex facere voluptate, nobis sed
+						officiis similique adipisci iusto fugit veritatis
+						molestiae repudiandae perspiciatis earum cum! Ipsum sed
+						ipsam iusto delectus officia aliquid dignissimos,
+						mollitia odit doloribus dicta voluptate aliquam
+						consectetur debitis doloremque reiciendis quos! Modi
+						distinctio tempore quibusdam magni deleniti ipsam
+						aliquam perspiciatis ut consectetur natus doloremque
+						quisquam nam eveniet cupiditate, quos fugiat, voluptas
+						mollitia, hic eius voluptatem.
+					</AboutUsContent>
+				</AboutUsContainer>
 				<Map onMarkerClick={OnMapMarkerClick} />
 				<Cards>
 					{Object.entries(People).map(([id, value]) => (
