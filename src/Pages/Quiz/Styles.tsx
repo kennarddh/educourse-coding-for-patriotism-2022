@@ -77,6 +77,10 @@ export const QuizContainerHeader = styled.div`
 	gap: 30px;
 
 	flex-direction: row;
+
+	@media only screen and (max-width: 700px) {
+		flex-direction: column-reverse;
+	}
 `
 
 export const QuizContainerHeaderLeft = styled.div`
@@ -90,6 +94,8 @@ export const QuizContainerHeaderLeft = styled.div`
 
 export const Question = styled.h2`
 	color: #ff731d;
+
+	text-align: center;
 `
 
 export const Text = styled.p`
