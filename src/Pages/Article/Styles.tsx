@@ -87,7 +87,7 @@ export const HighlightIcon = styled.img`
 
 export const Highlight = styled.button`
 	position: fixed;
-	bottom: 100px;
+	bottom: 175px;
 	right: 25px;
 	border-radius: 50%;
 	width: 50px;
