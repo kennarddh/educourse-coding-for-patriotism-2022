@@ -104,8 +104,6 @@ const Quiz: FC = () => {
 	useEffect(() => {
 		if (!IsAnswered) return
 
-		console.log('clear')
-
 		clearTimeout(TimeoutRef.current)
 	}, [IsAnswered])
 
@@ -122,20 +120,13 @@ const Quiz: FC = () => {
 	useEffect(() => {
 		if (!QuestionId) return
 
-		console.log(QuizQuestion[QuestionId].time * 1000)
-
 		TimeoutRef.current = setTimeout(() => {
 			// Wrong
 			OnAnswer(null)
-			console.log('timeout')
 		}, QuizQuestion[QuestionId].time * 1000)
 
 		return () => clearTimeout(TimeoutRef.current)
 	}, [OnAnswer, QuestionId])
-
-	useEffect(() => {
-		console.log({ ref: TimeoutRef.current })
-	})
 
 	return (
 		<>
