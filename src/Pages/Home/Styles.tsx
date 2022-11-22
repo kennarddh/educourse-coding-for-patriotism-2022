@@ -123,7 +123,7 @@ export const ModalCards = styled(Cards)`
 
 	height: 90%;
 
-	padding: 12px 0;
+	padding: 12px 10px;
 
 	/* Firefox scroll */
 	@supports (-moz-appearance: none) {
