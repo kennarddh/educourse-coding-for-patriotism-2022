@@ -1,5 +1,5 @@
 /* eslint-disable security/detect-object-injection */
-import { FC, useCallback, useContext, useEffect, useState } from 'react'
+import { FC, useCallback, useContext, useEffect, useRef, useState } from 'react'
 
 import QuizQuestion from 'Constants/Quiz'
 
@@ -29,6 +29,7 @@ const Quiz: FC = () => {
 	const { SetIsQuiz } = useContext(PagesContext)
 
 	const [Score, SetScore] = useState<number>(0)
+	const [TimeLeft, SetTimeLeft] = useState<number>(0)
 	const [HighScore, SetHighScore] = useState<number>(() => {
 		const data = localStorage.getItem('quizHighScore') ?? '0'
 
@@ -39,6 +40,9 @@ const Quiz: FC = () => {
 	const [AnswerChoices, SetAnswerChoices] = useState<string[]>([''])
 
 	const [IsAnswered, SetIsAnswered] = useState<boolean>(false)
+
+	const IntervalRef = useRef<number>(0)
+	const TimeoutRef = useRef<number>(0)
 
 	useTitle('Kuis')
 
@@ -53,6 +57,8 @@ const Quiz: FC = () => {
 			const id = PickUnique(Object.keys(QuizQuestion), prev)
 
 			SetAnswerChoices(Shuffle([...QuizQuestion[id].answers]))
+
+			SetTimeLeft(QuizQuestion[id].time)
 
 			return id
 		})
@@ -95,6 +101,42 @@ const Quiz: FC = () => {
 		localStorage.setItem('quizHighScore', HighScore.toString())
 	}, [HighScore])
 
+	useEffect(() => {
+		if (!IsAnswered) return
+
+		console.log('clear')
+
+		clearTimeout(TimeoutRef.current)
+	}, [IsAnswered])
+
+	useEffect(() => {
+		IntervalRef.current = setInterval(() => {
+			if (IsAnswered) return
+
+			SetTimeLeft(prev => (prev > 0 ? prev - 1 : prev))
+		}, 1000)
+
+		return () => clearInterval(IntervalRef.current)
+	}, [IsAnswered])
+
+	useEffect(() => {
+		if (!QuestionId) return
+
+		console.log(QuizQuestion[QuestionId].time * 1000)
+
+		TimeoutRef.current = setTimeout(() => {
+			// Wrong
+			OnAnswer(null)
+			console.log('timeout')
+		}, QuizQuestion[QuestionId].time * 1000)
+
+		return () => clearTimeout(TimeoutRef.current)
+	}, [OnAnswer, QuestionId])
+
+	useEffect(() => {
+		console.log({ ref: TimeoutRef.current })
+	})
+
 	return (
 		<>
 			<Header>
@@ -110,6 +152,7 @@ const Quiz: FC = () => {
 						<QuizContainerHeaderLeft>
 							<Text>Skor Tertinggi: {HighScore}</Text>
 							<Text>Skor: {Score}</Text>
+							<Text>Waktu: {TimeLeft}</Text>
 						</QuizContainerHeaderLeft>
 					</QuizContainerHeader>
 					<Answers>
