@@ -1,19 +1,29 @@
-import { FC, useContext } from 'react'
+import { FC, useContext, lazy, Suspense } from 'react'
 
-import Article from 'Pages/Article/Article'
-import Home from 'Pages/Home/Home'
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CustomLazy = (result: any, delay = 0) =>
+	lazy(() => {
+		return new Promise(resolve => {
+			setTimeout(() => resolve(result), delay)
+		})
+	})
+
+const Article = CustomLazy(import('Pages/Article/Article'), 100)
+const Home = CustomLazy(import('Pages/Home/Home'), 100)
+const Quiz = CustomLazy(import('Pages/Quiz/Quiz'), 100)
 
 import PagesContext from 'Contexts/Pages/Pages'
-import Quiz from 'Pages/Quiz/Quiz'
+
+import Loading from 'Components/Loading/Loading'
 
 const App: FC = () => {
 	const { SelectedArticleId, IsQuiz } = useContext(PagesContext)
 
-	if (IsQuiz) return <Quiz />
-
-	if (SelectedArticleId) return <Article />
-
-	return <Home />
+	return (
+		<Suspense fallback={<Loading />}>
+			{IsQuiz ? <Quiz /> : SelectedArticleId ? <Article /> : <Home />}
+		</Suspense>
+	)
 }
 
 export default App
