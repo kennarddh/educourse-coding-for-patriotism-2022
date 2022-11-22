@@ -3,7 +3,7 @@ import { IQuiz } from './Types'
 // First answer always correct
 const Quiz: IQuiz = {
 	'56b9c90d-857c-4b40-bcd8-1b38ba88799d': {
-		question: 'Dr. Ir. H. Soekano berasal dari?',
+		question: 'Dr. Ir. H. Soekarno berasal dari?',
 		time: 10,
 		answers: new Set([
 			'Jawa Timur',
@@ -79,7 +79,7 @@ const Quiz: IQuiz = {
 		answers: new Set(['Majalengka', 'Aceh', 'Lingga', 'Natuna']),
 	},
 	'834fbcdd-95c1-45ff-9df8-a945750f5035': {
-		question: 'Dimana pangeran antasari lahir?',
+		question: 'Dimana pangeran Antasari lahir?',
 		time: 10,
 		answers: new Set([
 			'Kayu Tangi',
@@ -89,7 +89,7 @@ const Quiz: IQuiz = {
 		]),
 	},
 	'd971c8c8-4745-4ee5-8b7a-cdfd3b7c0fff': {
-		question: 'Kapan pangeran antasari meninggal?',
+		question: 'Kapan pangeran Antasari meninggal?',
 		time: 10,
 		answers: new Set([
 			'Tahun 1797',
@@ -99,7 +99,7 @@ const Quiz: IQuiz = {
 		]),
 	},
 	'3f4e0656-8dab-4b03-991e-a33a0e171ec5': {
-		question: 'Terlibat dalam perang apa pangeran antasari?',
+		question: 'Terlibat dalam perang apa pangeran Antasari?',
 		time: 10,
 		answers: new Set([
 			'Perang Banjar',
@@ -144,7 +144,7 @@ const Quiz: IQuiz = {
 		]),
 	},
 	'f838a9aa-23d9-4800-8472-b03b748be96a': {
-		question: 'kapan tuanku imam bonjol meninggal?',
+		question: 'kapan tuanku Imam Bonjol meninggal?',
 		time: 10,
 		answers: new Set([
 			'6 November 1864',
@@ -171,6 +171,17 @@ const Quiz: IQuiz = {
 			'8 Agustus 1899',
 			'8 Juni 1901',
 			'9 Juli 1901',
+		]),
+	},
+	'4965031a-0826-414e-bb7b-4d54e3b3e8c9': {
+		question:
+			'Pahlawan yang juga dikenal sebagai bapak pendidikan Indonesia adalah?',
+		time: 15,
+		answers: new Set([
+			'Pangeran Diponegoro',
+			'R.A Kartini',
+			'Ki Hajar Dewantara',
+			'Pangeran Antasari',
 		]),
 	},
 }
