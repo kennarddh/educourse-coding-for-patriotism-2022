@@ -43,6 +43,7 @@ const Quiz: FC = () => {
 
 	const IntervalRef = useRef<number>(0)
 	const TimeoutRef = useRef<number>(0)
+	const TimeoutRefStart = useRef<number>(0)
 
 	useTitle('Kuis')
 
@@ -52,6 +53,8 @@ const Quiz: FC = () => {
 
 	const ChangeQuestion = useCallback(() => {
 		SetIsAnswered(false)
+
+		TimeoutRefStart.current = new Date().getTime()
 
 		SetQuestionId(prev => {
 			const id = PickUnique(Object.keys(QuizQuestion), prev)
@@ -108,7 +111,7 @@ const Quiz: FC = () => {
 	useEffect(() => {
 		if (!IsAnswered) return
 
-		clearTimeout(TimeoutRef.current)
+		clearInterval(TimeoutRef.current)
 	}, [IsAnswered])
 
 	useEffect(() => {
@@ -124,12 +127,17 @@ const Quiz: FC = () => {
 	useEffect(() => {
 		if (!QuestionId) return
 
-		TimeoutRef.current = setTimeout(() => {
-			// Wrong
-			OnAnswer(null)
-		}, QuizQuestion[QuestionId].time * 1000)
+		TimeoutRef.current = setInterval(() => {
+			if (
+				(new Date().getTime() - TimeoutRefStart.current) / 1000 >=
+				QuizQuestion[QuestionId].time
+			) {
+				// Wrong
+				OnAnswer(null)
+			}
+		}, 100)
 
-		return () => clearTimeout(TimeoutRef.current)
+		return () => clearInterval(TimeoutRef.current)
 	}, [OnAnswer, QuestionId])
 
 	return (
