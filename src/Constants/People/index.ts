@@ -17,6 +17,7 @@ import IGustiNgurahRai from './IGustiNgurahRai'
 import SultanMahmudBadaruddinII from './SultanMahmudBadaruddinII'
 import AbdulHalim from './AbdulHalim'
 import OemarSaidTjokroaminoto from './OemarSaidTjokroaminoto'
+import KiHadjarDewantara from './KiHadjarDewantara'
 
 import { IPeople } from './Types'
 
@@ -40,6 +41,7 @@ const People: IPeople = {
 	'b622b33d-723f-4e3c-ba42-a704cc9274ef': SultanMahmudBadaruddinII,
 	'06ba3452-643c-436e-afee-744ae2a50a4b': AbdulHalim,
 	'4f6e92a5-7f46-4275-b127-fb23a427091d': OemarSaidTjokroaminoto,
+	'9f16b592-fe30-4899-9e1e-4b4f17753aca': KiHadjarDewantara,
 }
 
 export default People
