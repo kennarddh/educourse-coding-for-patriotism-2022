@@ -70,10 +70,14 @@ const Quiz: FC = () => {
 
 			if ([...QuizQuestion[QuestionId].answers][0] === answer) {
 				// Correct
-				SetScore(prev => prev + 1)
+				SetScore(prev => prev + TimeLeft)
 			} else {
 				// Wrong
-				SetScore(prev => (prev <= 0 ? prev : prev - 1))
+				SetScore(prev =>
+					prev - (QuizQuestion[QuestionId].time - TimeLeft) <= 0
+						? 0
+						: prev - (QuizQuestion[QuestionId].time - TimeLeft)
+				)
 			}
 
 			SetIsAnswered(true)
@@ -82,7 +86,7 @@ const Quiz: FC = () => {
 				ChangeQuestion()
 			}, 2000)
 		},
-		[ChangeQuestion, IsAnswered, QuestionId]
+		[ChangeQuestion, IsAnswered, QuestionId, TimeLeft]
 	)
 
 	useEffect(() => {
