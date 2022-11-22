@@ -1,5 +1,6 @@
 import { IQuiz } from './Types'
 
+// First answer always correct
 const Quiz: IQuiz = {
 	'56b9c90d-857c-4b40-bcd8-1b38ba88799d': {
 		question: 'Dr. Ir. H. Soekano berasal dari?',
