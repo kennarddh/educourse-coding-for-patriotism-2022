@@ -51,25 +51,11 @@ const Quiz: FC = () => {
 		SetIsQuiz(false)
 	}
 
-	const ChangeQuestion = useCallback((timeOut = false) => {
+	const ChangeQuestion = useCallback(() => {
 		SetIsAnswered(false)
 
 		SetQuestionId(prev => {
-			const newId = PickUnique(Object.keys(QuizQuestion), prev)
-
-			LastIdRef.current = newId
-
-			SetAnswerChoices(Shuffle([...QuizQuestion[newId].answers]))
-
-			SetTimeLeft(QuizQuestion[newId].time)
-
-			if (timeOut) {
-				SetScore(prev => {
-					return prev <= 0 ? prev : prev - 1
-				})
-			}
-
-			return newId
+			return PickUnique(Object.keys(QuizQuestion), prev)
 		})
 	}, [])
 
@@ -107,13 +93,27 @@ const Quiz: FC = () => {
 	}, [ChangeQuestion])
 
 	useEffect(() => {
+		if (!Object.keys(QuizQuestion).includes(QuestionId)) return
+
+		LastIdRef.current = QuestionId
+
+		SetAnswerChoices(Shuffle([...QuizQuestion[QuestionId].answers]))
+
+		SetTimeLeft(QuizQuestion[QuestionId].time)
+
 		IntervalIdRef.current = setInterval(() => {
 			SetTimeLeft(prev => {
 				if (prev <= 0 && LastIdRef.current === QuestionId) {
 					SetIsAnswered(true)
 
+					SetScore(prevScore => {
+						return prevScore <= 0 ? prevScore : prevScore - 1
+					})
+
+					clearInterval(IntervalIdRef.current)
+
 					setTimeout(() => {
-						ChangeQuestion(true)
+						ChangeQuestion()
 					}, 2000)
 
 					return 0
