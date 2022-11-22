@@ -25,6 +25,7 @@ import BackToTop from 'Components/BackToTop/BackToTop'
 import useTitle from 'Hooks/useTitle'
 
 import Map from 'Components/Map/Map'
+import QuizIcon from 'Components/QuizIcon/QuizIcon'
 
 const Home: FC = () => {
 	const ModalRef = useRef<IModalHandle>(null)
@@ -127,6 +128,7 @@ const Home: FC = () => {
 			</Modal>
 			<Footer />
 			<BackToTop />
+			<QuizIcon />
 		</>
 	)
 }

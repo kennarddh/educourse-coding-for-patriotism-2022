@@ -8,6 +8,13 @@ const Footer: FC = () => {
 			<Container>
 				<EducourseLogo src='EducourseLogo.png' />
 				<Text>Dibuat dengan Typescript dan React JS.</Text>
+				<Text
+					as='a'
+					href='https://www.flaticon.com/free-icons/quiz'
+					title='quiz icons'
+				>
+					Quiz icons created by Freepik - Flaticon
+				</Text>
 			</Container>
 		</Wrapper>
 	)

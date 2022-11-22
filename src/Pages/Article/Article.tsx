@@ -25,6 +25,7 @@ import {
 } from './Styles'
 
 import type { IHighlightData, ILocalStorageHighlightData } from './Types'
+import QuizIcon from 'Components/QuizIcon/QuizIcon'
 
 const Article: FC = () => {
 	const { SetSelectedArticleId, SelectedArticleId } = useContext(PagesContext)
@@ -65,8 +66,6 @@ const Article: FC = () => {
 		const commonAncestorContainer = range?.commonAncestorContainer
 
 		const newSet = new Set(HighlightData)
-
-		console.log({ selection, range, cloneContentsChildren })
 
 		if (cloneContentsChildren?.length === 0) {
 			// Select in one group
@@ -222,6 +221,7 @@ const Article: FC = () => {
 					title='Sumber ikon https://thenounproject.com/icon/stabilo-2348306/'
 				/>
 			</Highlight>
+			<QuizIcon />
 		</>
 	)
 }
