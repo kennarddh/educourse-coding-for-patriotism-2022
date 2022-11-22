@@ -1,4 +1,4 @@
-export type IAnswers = string[]
+export type IAnswers = Set<string>
 
 /**
  * IQuizQuestion interface
