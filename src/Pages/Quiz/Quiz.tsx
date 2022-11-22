@@ -34,6 +34,8 @@ const Quiz: FC = () => {
 	const [QuestionId, SetQuestionId] = useState<string>('')
 	const [AnswerChoices, SetAnswerChoices] = useState<string[]>([''])
 
+	const [IsAnswered, SetIsAnswered] = useState<boolean>(false)
+
 	const LastIdRef = useRef<string>('')
 
 	useTitle('Kuis')
@@ -43,6 +45,8 @@ const Quiz: FC = () => {
 	}
 
 	const ChangeQuestion = useCallback((timeOut = false) => {
+		SetIsAnswered(false)
+
 		SetQuestionId(prev => {
 			const newId = PickUnique(Object.keys(QuizQuestion), prev)
 
@@ -64,6 +68,8 @@ const Quiz: FC = () => {
 
 	const OnAnswer = useCallback(
 		(answer: string) => {
+			if (IsAnswered) return
+
 			if ([...QuizQuestion[QuestionId].answers][0] === answer) {
 				// Correct
 
@@ -74,9 +80,13 @@ const Quiz: FC = () => {
 				SetScore(prev => (prev <= 0 ? prev : prev - 1))
 			}
 
-			ChangeQuestion()
+			SetIsAnswered(true)
+
+			setTimeout(() => {
+				ChangeQuestion()
+			}, 1000)
 		},
-		[ChangeQuestion, QuestionId]
+		[ChangeQuestion, IsAnswered, QuestionId]
 	)
 
 	useEffect(() => {
@@ -91,7 +101,11 @@ const Quiz: FC = () => {
 		const intervalId = setInterval(() => {
 			SetTimeLeft(prev => {
 				if (prev <= 0 && LastIdRef.current === QuestionId) {
-					ChangeQuestion(true)
+					SetIsAnswered(true)
+
+					setTimeout(() => {
+						ChangeQuestion(true)
+					}, 1000)
 
 					return 0
 				} else {
@@ -125,6 +139,14 @@ const Quiz: FC = () => {
 							<Answer
 								key={choice}
 								onClick={() => OnAnswer(choice)}
+								isAnswered={IsAnswered}
+								isCorrect={
+									choice ===
+									[
+										...(QuizQuestion[QuestionId]?.answers ??
+											[]),
+									][0]
+								}
 							>
 								<p>{choice}</p>
 							</Answer>
