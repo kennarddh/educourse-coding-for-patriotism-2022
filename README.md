@@ -4,6 +4,8 @@ Tujuan pembuatan program ini adalah agar generasi muda dapat tetap mengenal para
 
 [Color Palete](https://colorhunt.co/palette/ff731dfff7e95f9df71746a2)
 
+[Preview](https://kennarddh.github.io/educourse-coding-for-patriotism-2022/)
+
 ## Guide
 
 ### Install Dependencies
