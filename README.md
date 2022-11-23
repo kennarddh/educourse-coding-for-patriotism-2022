@@ -1,4 +1,6 @@
-# React JS Boilerplate
+# Mengenal Pahlawan Indonesia
+
+Tujuan pembuatan program ini adalah agar generasi muda dapat tetap mengenal para pahlawan yang telah berjuang sehingga kita dapat menikmati kemerdekaan dan menjadi negara yang maju seperti sekarang.
 
 ## Guide
 
