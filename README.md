@@ -2,6 +2,8 @@
 
 Tujuan pembuatan program ini adalah agar generasi muda dapat tetap mengenal para pahlawan yang telah berjuang sehingga kita dapat menikmati kemerdekaan dan menjadi negara yang maju seperti sekarang.
 
+[Color Palete](https://colorhunt.co/palette/ff731dfff7e95f9df71746a2)
+
 ## Guide
 
 ### Install Dependencies
