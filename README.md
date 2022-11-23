@@ -142,6 +142,14 @@ Run tests related to changed files based on hg/git (uncommitted files)
 npm run test:changed
 ```
 
+### Deploy
+
+Deploy to github pages
+
+```bash
+npm run deploy
+```
+
 ## Note
 
 -   Babel is only for jest to transpile typescript code. If you don't want to use babel you can use [`vitest`](https://vitest.dev/)
