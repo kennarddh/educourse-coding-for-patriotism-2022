@@ -81,21 +81,16 @@ const Home: FC = () => {
 				<AboutUsContainer>
 					<AboutUsTitle>About Us</AboutUsTitle>
 					<AboutUsContent>
-						Lorem ipsum, dolor sit amet consectetur adipisicing
-						elit. Quaerat aut vero inventore nemo quia ex optio sunt
-						totam quas incidunt deserunt dolore soluta suscipit
-						neque repudiandae, iusto similique corporis eos culpa!
-						Quo distinctio vel tempora ratione inventore saepe
-						quidem expedita odio ex facere voluptate, nobis sed
-						officiis similique adipisci iusto fugit veritatis
-						molestiae repudiandae perspiciatis earum cum! Ipsum sed
-						ipsam iusto delectus officia aliquid dignissimos,
-						mollitia odit doloribus dicta voluptate aliquam
-						consectetur debitis doloremque reiciendis quos! Modi
-						distinctio tempore quibusdam magni deleniti ipsam
-						aliquam perspiciatis ut consectetur natus doloremque
-						quisquam nam eveniet cupiditate, quos fugiat, voluptas
-						mollitia, hic eius voluptatem.
+						Saya siswa SMP yang menyukai pemrograman sejak 2019.
+						Program ini dibuat untuk mengikuti perlombaan hari
+						pahlawan nasional yang diadakan oleh Educourse.
+						Dikarenakan program ini hanya dibuat dalam 3 hari,
+						program ini hanya berupa konsep yang masih dapat
+						dikembangkan lagi di kemudian hari. Tujuan pembuatan
+						program ini adalah agar generasi muda dapat tetap
+						mengenal para pahlawan yang telah berjuang sehingga kita
+						dapat menikmati kemerdekaan dan menjadi negara yang maju
+						seperti sekarang.
 					</AboutUsContent>
 				</AboutUsContainer>
 				<Map onMarkerClick={OnMapMarkerClick} />

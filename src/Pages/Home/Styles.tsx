@@ -230,7 +230,7 @@ export const AboutUsTitle = styled.h3`
 `
 
 export const AboutUsContent = styled.p`
-	color: #ff731d;
+	color: #1746a2;
 
 	font-size: 20px;
 	text-align: center;

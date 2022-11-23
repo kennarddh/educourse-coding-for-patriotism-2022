@@ -27,7 +27,7 @@ export const Title = styled.p`
 
 	font-style: normal;
 	font-weight: 800;
-	font-size: 25px;
+	font-size: 30px;
 	text-align: center;
 
 	@media only screen and (max-width: 400px) {
