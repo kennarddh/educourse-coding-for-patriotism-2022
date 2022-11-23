@@ -4,7 +4,7 @@ const Person: IPerson = {
 	name: 'I Gusti Ngurah Rai',
 	origin: 'Bali',
 	image: 'People/IGustiNgurahRai/Card.jpg',
-	thumbnail: 'People/IGustiNgurahRai/Thumbnail.jpeg',
+	thumbnail: 'People/IGustiNgurahRai/Thumbnail.jpg',
 	imageSource: 'https://id.wikipedia.org/wiki/I_Gusti_Ngurah_Rai',
 	thumbnailSource:
 		'https://nasional.sindonews.com/read/671573/15/i-gusti-ngurah-rai-jenderal-perang-puputan-yang-tak-kenal-takut-1643511718',
